@@ -98,18 +98,17 @@
                 <a class="attribute-control" data-action="create" data-group="{{group}}"><i class="fas fa-plus"></i></a>
             </header>
 
-            {{!-- Render the attribute list partial. --}}
-            {{> "systems/worldbuilding/templates/parts/sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
+            <ol class="attributes-list">
+                {{#each actor.data.attributes as |attrib key|}}
+                <li class="attribute flexrow" data-attribute="{{key}}">
+                    <span class="attribute-label flexrow" name="data.attributes.{{key}}.label">{{label}}</span>
+                    <div class="attribute-editbox flexrow">
+                        <input class="attribute-value" type="text" name="data.attributes.{{key}}.value" value="{{attrib.value}}" data-dtype="Number"/>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
 
-            {{!-- Render the grouped attributes partial and control. --}}
-            <div class="groups">
-                {{> "systems/worldbuilding/templates/parts/sheet-groups.html" attributes=systemData.groupedAttributes groups=systemData.groups dtypes=dtypes}}
-
-                <div class="group-controls flexrow">
-                    <input class="group-prefix" type="text" value=""/>
-                    <a class="button group-control" data-action="create-group"><i class="fas fa-plus"></i>Add Attribute Group</a>
-                </div>
-            </div>
         </div>
     </section>
 </form>

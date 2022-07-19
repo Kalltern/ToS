@@ -1,30 +1,125 @@
 {
-"Actor": {
-  "types": ["character"],
-  "character": {
-    "biography": "",
-    "health": {
-      "value": 10,
-      "min": 0,
-      "max": 10
-    },
-    "power": {
-      "value": 5,
-      "min": 0,
-      "max": 5
-    },
-    "attributes": {},
-    "groups": {}
+  "Actor": {
+    "types": ["character"],
+    "character": {
+      "biography": "",
+      "health": {
+        "value": 10,
+        "min": 0,
+        "max": 10
+      },
+      "stamina": {
+        "value": 5,
+        "min": 0,
+        "max": 5
+      },
+      "toxicity": {
+        "value": 5,
+        "min": 0,
+        "max": 5
+      },
+      "mana": {
+        "value": 5,
+        "min": 0,
+        "max": 5
+      },
+      "holyenergy": {
+        "value": 5,
+        "min": 0,
+        "max": 5
+      },
+      "primaryattributes": {
+        "strength": {
+          "value": 0,
+          "label": "Strength",
+          "modifier": []
+        },
+        "dexterity": {
+          "value": 0,
+          "label": "Dexterity",
+          "modifier": []
+        },
+        "endurance": {
+          "value": 0,
+          "label": "Endurance",
+          "modifier": []
+        },
+        "intelligence": {
+          "value": 0,
+          "label": "Intelligence",
+          "modifier": []
+        },
+        "willpower": {
+          "value": 0,
+          "label": "Willpower",
+          "modifier": []
+        },
+        "charisma": {
+          "value": 0,
+          "label": "Charisma",
+          "modifier": []
+        },
+        "perception": {
+          "value": 0,
+          "label": "Perception",
+          "modifier": []
+        }
+      },
+      "secondaryattributes": {
+        "speed": {
+          "value": 0,
+          "label": "Speed",
+          "modifier": []
+        },
+        "luck": {
+          "value": 0,
+          "label": "Luck",
+          "modifier": []
+        },
+        "resolve": {
+          "value": 0,
+          "label": "Resolve",
+          "modifier": []
+        },
+        "faith": {
+          "value": 0,
+          "label": "Faith",
+          "modifier": []
+        },
+        "sinfulness": {
+          "value": 0,
+          "label": "Sinfulness",
+          "modifier": []
+        },
+        "visage": {
+          "value": 0,
+          "label": "Visage",
+          "modifier": []
+        },
+        "initiative": {
+          "value": 0,
+          "label": "Initiative",
+          "modifier": []
+        }
+      },
+
+      "combatskills": {
+        "combat": {
+          "value": 0,
+          "label": "Combat",
+          "modifier": []
+        }
+      }
+    }
+  },
+  "Item": {
+    "types": ["item"],
+    "item": {
+      "description": "",
+      "quantity": 1,
+      "weight": 0,
+      "attributes": {},
+      "groups": {}
+    }
   }
-},
-"Item": {
-  "types": ["item"],
-  "item": {
-    "description": "",
-    "quantity": 1,
-    "weight": 0,
-    "attributes": {},
-    "groups": {}
-  }
-}
 }
