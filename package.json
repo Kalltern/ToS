@@ -1,21 +1,23 @@
 {
-  "name": "worldbuilding",
+  "name": "tos",
   "version": "1.0.0",
-  "description": "CSS compiler for the Worldbuilding system",
+  "description": "CSS compiler for the ToS system",
   "scripts": {
-    "css": "gulp css",
+    "build": "gulp build",
+    "compile": "gulp css",
     "watch": "gulp",
     "gulp": "gulp"
   },
   "browserslist": [
     "last 3 versions"
   ],
-  "author": "",
+  "author": "John Doe",
   "license": "MIT",
   "private": true,
   "dependencies": {
     "gulp": "^4.0.2",
-    "gulp-less": "^4.0.1"
-  },
-  "devDependencies": {}
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5"
+  }
 }

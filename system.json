@@ -1,32 +1,28 @@
 {
   "name": "tos",
   "title": "ToS",
-  "description": "A rudimentary implementation of <ToS> for Foundry VTT, based entirely on the Simple Worldbuilding System for Foundry designed by Atropos.",
-  "version": "0.6.5",
-  "minimumCoreVersion": "0.8.9",
+  "description": "ToS",
+  "version": "0.01",
+  "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
   "author": "Kalltern",
-  "esmodules": ["module/simple.js"],
-  "styles": ["styles/simple.css"],
+  "esmodules": ["module/tos.mjs"],
+  "styles": ["css/tos.css"],
+  "scripts": [],
   "packs": [],
   "languages": [
     {
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
-    },
-    {
-      "lang": "cz",
-      "name": "Czech",
-      "path": "lang/cz.json"
     }
   ],
   "gridDistance": 1.5,
   "gridUnits": "m",
   "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "mana",
-  "url": "https://gitlab.com/foundrynet/worldbuilding/",
-  "manifest": "https://raw.githubusercontent.com/foundryvtt/worldbuilding/master/system.json",
-  "download": "https://github.com/foundryvtt/worldbuilding/archive/refs/tags/release-065.zip",
+  "secondaryTokenAttribute": "stamina",
+  "url": "",
+  "manifest": "",
+  "download": "",
   "license": "LICENSE.txt"
 }
