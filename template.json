@@ -30,16 +30,19 @@
         "dex": {
           "value": 10
         },
-        "con": {
+        "end": {
           "value": 10
         },
         "int": {
           "value": 10
         },
-        "wis": {
+        "wil": {
           "value": 10
         },
         "cha": {
+          "value": 10
+        },
+        "per": {
           "value": 10
         }
       }

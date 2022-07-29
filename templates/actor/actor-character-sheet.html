@@ -105,7 +105,7 @@
               <label
                 for="data.abilities.{{key}}.value"
                 class="resource-label rollable flexlarge align-left"
-                data-roll="d20+@abilities.{{key}}.mod"
+                data-roll="d100+@abilities.{{key}}.mod"
                 data-label="{{ability.label}}"
                 >{{ability.label}}</label
               >
@@ -117,7 +117,7 @@
               />
               <span
                 class="ability-mod rollable"
-                data-roll="d20+@abilities.{{key}}.mod"
+                data-roll="d100+@abilities.{{key}}.mod"
                 data-label="{{ability.label}}"
                 >{{numberFormat ability.mod decimals=0 sign=true}}</span
               >

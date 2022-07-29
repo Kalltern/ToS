@@ -14,7 +14,7 @@ export class TosActorSheet extends ActorSheet {
       classes: ["tos", "sheet", "actor"],
       template: "systems/tos/templates/actor/actor-sheet.html",
       width: 600,
-      height: 600,
+      height: 900,
       tabs: [
         {
           navSelector: ".sheet-tabs",
