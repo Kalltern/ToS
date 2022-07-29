@@ -45,33 +45,140 @@
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.power.value" class="resource-label">Power</label>
+          <label for="data.stamina.value" class="resource-label">Stamina</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="data.power.value"
+              name="data.stamina.value"
               value="{{data.power.value}}"
               data-dtype="Number"
             />
             <span> / </span>
             <input
               type="text"
-              name="data.power.max"
-              value="{{data.power.max}}"
+              name="data.stamina.max"
+              value="{{data.stamina.max}}"
               data-dtype="Number"
             />
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.attributes.level.value" class="resource-label"
-            >Level</label
+          <label for="data.toxicity.value" class="resource-label"
+            >Toxicity</label
           >
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="data.attributes.level.value"
-              value="{{data.attributes.level.value}}"
+              name="data.toxicity.value"
+              value="{{data.power.value}}"
+              data-dtype="Number"
+            />
+            <span> / </span>
+            <input
+              type="text"
+              name="data.toxicity.max"
+              value="{{data.toxicity.max}}"
+              data-dtype="Number"
+            />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="data.wounds.value" class="resource-label">Wounds</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input
+              type="text"
+              name="data.wounds.value"
+              value="{{data.power.value}}"
+              data-dtype="Number"
+            />
+            <span> / </span>
+            <input
+              type="text"
+              name="data.wounds.max"
+              value="{{data.wounds.max}}"
+              data-dtype="Number"
+            />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="data.mana.value" class="resource-label">Mana</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input
+              type="text"
+              name="data.mana.value"
+              value="{{data.power.value}}"
+              data-dtype="Number"
+            />
+            <span> / </span>
+            <input
+              type="text"
+              name="data.mana.max"
+              value="{{data.mana.max}}"
+              data-dtype="Number"
+            />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="data.holyenergy.value" class="resource-label"
+            >Holy Energy</label
+          >
+          <div class="resource-content flexrow flex-center flex-between">
+            <input
+              type="text"
+              name="data.holyenergy.value"
+              value="{{data.power.value}}"
+              data-dtype="Number"
+            />
+            <span> / </span>
+            <input
+              type="text"
+              name="data.holyenergy.max"
+              value="{{data.holyenergy.max}}"
+              data-dtype="Number"
+            />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="data.attributes.cp.value" class="resource-label"
+            >Combat Points</label
+          >
+          <div class="resource-content flexrow flex-center flex-between">
+            <input
+              type="text"
+              name="data.attributes.cp.value"
+              value="{{data.attributes.cp.value}}"
+              data-dtype="Number"
+            />
+            <span> / </span>
+            <input
+              type="text"
+              name="data.cp.max"
+              value="{{data.cp.max}}"
+              data-dtype="Number"
+            />
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="data.attributes.sp.value" class="resource-label"
+            >Skill Points</label
+          >
+          <div class="resource-content flexrow flex-center flex-between">
+            <input
+              type="text"
+              name="data.attributes.sp.value"
+              value="{{data.attributes.sp.value}}"
+              data-dtype="Number"
+            />
+            <span> / </span>
+            <input
+              type="text"
+              name="data.sp.max"
+              value="{{data.sp.max}}"
               data-dtype="Number"
             />
           </div>
@@ -105,7 +212,7 @@
               <label
                 for="data.abilities.{{key}}.value"
                 class="resource-label rollable flexlarge align-left"
-                data-roll="d100+@abilities.{{key}}.mod"
+                data-roll="15+(10*@abilities.{{key}}.value)-d100"
                 data-label="{{ability.label}}"
                 >{{ability.label}}</label
               >
