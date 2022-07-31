@@ -21,7 +21,7 @@
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use, use
       both the "grid" and "grid-Ncol" class where "N" can be any number from 1
       to 12 and will create that number of columns. --}}
-      <div class="resources grid grid-3col">
+      <div class="resources grid grid-4col">
         {{!-- "flex-group-center" is also defined in the _grid.scss file and it
         will add a small amount of padding, a border, and will center all of its
         child elements content and text. --}}
@@ -34,7 +34,7 @@
               value="{{data.health.value}}"
               data-dtype="Number"
             />
-            <span> / </span>
+
             <input
               type="text"
               name="data.health.max"
@@ -53,7 +53,7 @@
               value="{{data.power.value}}"
               data-dtype="Number"
             />
-            <span> / </span>
+
             <input
               type="text"
               name="data.stamina.max"
@@ -74,7 +74,7 @@
               value="{{data.power.value}}"
               data-dtype="Number"
             />
-            <span> / </span>
+
             <input
               type="text"
               name="data.toxicity.max"
@@ -93,7 +93,7 @@
               value="{{data.power.value}}"
               data-dtype="Number"
             />
-            <span> / </span>
+
             <input
               type="text"
               name="data.wounds.max"
@@ -112,7 +112,7 @@
               value="{{data.power.value}}"
               data-dtype="Number"
             />
-            <span> / </span>
+
             <input
               type="text"
               name="data.mana.max"
@@ -133,7 +133,7 @@
               value="{{data.power.value}}"
               data-dtype="Number"
             />
-            <span> / </span>
+
             <input
               type="text"
               name="data.holyenergy.max"
@@ -154,7 +154,7 @@
               value="{{data.attributes.cp.value}}"
               data-dtype="Number"
             />
-            <span> / </span>
+
             <input
               type="text"
               name="data.cp.max"
@@ -174,7 +174,7 @@
               value="{{data.attributes.sp.value}}"
               data-dtype="Number"
             />
-            <span> / </span>
+
             <input
               type="text"
               name="data.sp.max"
@@ -203,6 +203,12 @@
     <div class="tab features" data-group="primary" data-tab="features">
       <section class="grid grid-3col">
         <aside class="sidebar">
+          <label
+            for="data.abilities"
+            class="resource-label"
+            style="font-size: large"
+            >Attributes</label
+          >
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns. --}}
@@ -212,6 +218,7 @@
               <label
                 for="data.abilities.{{key}}.value"
                 class="resource-label rollable flexlarge align-left"
+                y
                 data-roll="15+(10*@abilities.{{key}}.value)-d100"
                 data-label="{{ability.label}}"
                 >{{ability.label}}</label
@@ -222,12 +229,34 @@
                 value="{{ability.value}}"
                 data-dtype="Number"
               />
-              <span
-                class="ability-mod rollable"
-                data-roll="d100+@abilities.{{key}}.mod"
+            </div>
+            {{/each}}
+          </div>
+          <p></p>
+          <label
+            for="data.abilities2"
+            class="resource-label"
+            style="font-size: large"
+            >Secondary Attributes</label
+          >
+          <div class="abilities2 flexcol">
+            {{#each data.abilities2 as |ability key|}}
+            <div class="ability flexrow flex-group-center">
+              <label
+                for="data.abilities2.{{key}}.value"
+                class="resource-label rollable flexlarge align-left"
+                y
+                data-roll="15+(10*@abilities2.{{key}}.value)-d100"
                 data-label="{{ability.label}}"
-                >{{numberFormat ability.mod decimals=0 sign=true}}</span
               >
+                {{ability.label}}</label
+              >
+              <input
+                type="text"
+                name="data.abilities2.{{key}}.value"
+                value="{{ability.value}}"
+                data-dtype="Number"
+              />
             </div>
             {{/each}}
           </div>

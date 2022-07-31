@@ -78,6 +78,9 @@ export class TosActorSheet extends ActorSheet {
     // Handle ability scores.
     for (let [k, v] of Object.entries(context.data.abilities)) {
       v.label = game.i18n.localize(CONFIG.TOS.abilities[k]) ?? k;
+      for (let [k, v] of Object.entries(context.data.abilities2)) {
+        v.label = game.i18n.localize(CONFIG.TOS.abilities2[k]) ?? k;
+      }
     }
   }
 
@@ -93,14 +96,14 @@ export class TosActorSheet extends ActorSheet {
     const gear = [];
     const features = [];
     const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
+      Air: [],
+      Earth: [],
+      Fire: [],
+      Water: [],
+      Body: [],
+      Spirit: [],
+      Dark: [],
+      Gnosis: [],
       8: [],
       9: [],
     };
@@ -225,7 +228,7 @@ export class TosActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : "";
+      let label = dataset.label ? ` ${dataset.label}` : "";
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),

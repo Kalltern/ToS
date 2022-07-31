@@ -8,7 +8,42 @@
           "min": 0,
           "max": 10
         },
-        "power": {
+        "stamina": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "toxicity": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "wounds": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "fatigue": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "mentalhealth": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "sanity": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "mana": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "holyenergy": {
           "value": 5,
           "min": 0,
           "max": 5
@@ -25,25 +60,48 @@
       },
       "abilities": {
         "str": {
-          "value": 10
+          "value": 1
         },
         "dex": {
-          "value": 10
+          "value": 1
         },
         "end": {
-          "value": 10
+          "value": 1
         },
         "int": {
-          "value": 10
+          "value": 1
         },
         "wil": {
-          "value": 10
+          "value": 1
         },
         "cha": {
-          "value": 10
+          "value": 1
         },
         "per": {
-          "value": 10
+          "value": 1
+        }
+      },
+      "abilities2": {
+        "fth": {
+          "value": 0
+        },
+        "ini": {
+          "value": 0
+        },
+        "lck": {
+          "value": 0
+        },
+        "sin": {
+          "value": 0
+        },
+        "spd": {
+          "value": 0
+        },
+        "vsg": {
+          "value": 0
+        },
+        "res": {
+          "value": 0
         }
       }
     },
