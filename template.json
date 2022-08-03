@@ -2,48 +2,53 @@
   "Actor": {
     "types": ["character", "npc"],
     "templates": {
-      "base": {
-        "health": {
+      "stats": {
+        "hp": {
           "value": 10,
           "min": 0,
           "max": 10
         },
-        "stamina": {
+        "sta": {
           "value": 5,
           "min": 0,
           "max": 5
         },
-        "toxicity": {
+        "tox": {
           "value": 5,
           "min": 0,
           "max": 5
         },
-        "wounds": {
+        "man": {
           "value": 5,
           "min": 0,
           "max": 5
         },
-        "fatigue": {
+        "sw": {
           "value": 5,
           "min": 0,
           "max": 5
         },
-        "mentalhealth": {
+        "mh": {
           "value": 5,
           "min": 0,
           "max": 5
         },
-        "sanity": {
+        "san": {
           "value": 5,
           "min": 0,
           "max": 5
         },
-        "mana": {
+        "cor": {
           "value": 5,
           "min": 0,
           "max": 5
         },
-        "holyenergy": {
+        "fat": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "ln": {
           "value": 5,
           "min": 0,
           "max": 5
@@ -58,6 +63,7 @@
           "value": 1
         }
       },
+
       "abilities": {
         "str": {
           "value": 1
