@@ -89,16 +89,20 @@
       },
       "abilities2": {
         "fth": {
-          "value": 0
+          "value": 0,
+          "roll": "(8*@abilities2.fth.value)-d100"
         },
         "ini": {
-          "value": 0
+          "value": 0,
+          "roll": "d12+(@abilities2.ini.value)+(@abilities2.spd.value)"
         },
         "lck": {
-          "value": 0
+          "value": 0,
+          "roll": "50+(5*@abilities2.lck.value)-d100"
         },
         "sin": {
-          "value": 0
+          "value": 0,
+          "roll": "(10*@abilities2.res.value)-(3*@abilities2.sin.value)-d100"
         },
         "spd": {
           "value": 0
@@ -107,7 +111,8 @@
           "value": 0
         },
         "res": {
-          "value": 0
+          "value": 0,
+          "roll": "(10*@abilities2.res.value)-d100"
         }
       }
     },

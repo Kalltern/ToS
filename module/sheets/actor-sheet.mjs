@@ -78,9 +78,9 @@ export class TosActorSheet extends ActorSheet {
     // Handle ability scores.
     for (let [k, v] of Object.entries(context.data.abilities)) {
       v.label = game.i18n.localize(CONFIG.TOS.abilities[k]) ?? k;
-      for (let [k, v] of Object.entries(context.data.abilities2)) {
-        v.label = game.i18n.localize(CONFIG.TOS.abilities2[k]) ?? k;
-      }
+    }
+    for (let [k, v] of Object.entries(context.data.abilities2)) {
+      v.label = game.i18n.localize(CONFIG.TOS.abilities2[k]) ?? k;
     }
   }
 

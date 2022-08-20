@@ -266,6 +266,7 @@
   <nav class="sheet-tabs tabs" data-group="primary">
     {{!-- Default tab is specified in actor-sheet.mjs --}}
     <a class="item" data-tab="features">Features</a>
+    <a class="item" data-tab="skills">Skills</a>
     <a class="item" data-tab="description">Description</a>
     <a class="item" data-tab="items">Items</a>
     <a class="item" data-tab="spells">Spells</a>
@@ -314,18 +315,72 @@
             style="font-size: large"
             >Secondary Attributes</label
           >
+
           <div class="abilities2 flexcol">
             {{#each data.abilities2 as |ability key|}}
             <div class="ability flexrow flex-group-center">
+              {{#when key 'eq' 'fth'}}
               <label
                 for="data.abilities2.{{key}}.value"
                 class="resource-label rollable flexlarge align-left"
                 y
-                data-roll="15+(10*@abilities2.{{key}}.value)-d100"
+                data-roll="(8*@abilities2.fth.value)-d100"
                 data-label="{{ability.label}}"
+                >{{ability.label}}</label
               >
-                {{ability.label}}</label
+              {{/when}} {{#when key 'eq' 'ini'}}
+              <label
+                for="data.abilities2.{{key}}.value"
+                class="resource-label rollable flexlarge align-left"
+                y
+                data-roll="d12+(@abilities2.ini.value)+(@abilities2.spd.value)"
+                data-label="{{ability.label}}"
+                >{{ability.label}}</label
               >
+              {{/when}} {{#when key 'eq' 'lck'}}
+              <label
+                for="data.abilities2.{{key}}.value"
+                class="resource-label rollable flexlarge align-left"
+                y
+                data-roll="50+(5*@abilities2.lck.value)-d100"
+                data-label="{{ability.label}}"
+                >{{ability.label}}</label
+              >
+              {{/when}} {{#when key 'eq' 'sin'}}
+              <label
+                for="data.abilities2.{{key}}.value"
+                class="resource-label rollable flexlarge align-left"
+                y
+                data-roll="(10*@abilities2.res.value)-(3*@abilities2.sin.value)-d100"
+                data-label="{{ability.label}}"
+                >{{ability.label}}</label
+              >
+              {{/when}} {{#when key 'eq' 'spd'}}
+              <label
+                for="data.abilities2.{{key}}.value"
+                class="resource-label flexlarge align-left"
+                y
+                data-label="{{ability.label}}"
+                >{{ability.label}}</label
+              >
+              {{/when}} {{#when key 'eq' 'vsg'}}
+              <label
+                for="data.abilities2.{{key}}.value"
+                class="resource-label flexlarge align-left"
+                y
+                data-label="{{ability.label}}"
+                >{{ability.label}}</label
+              >
+              {{/when}} {{#when key 'eq' 'res'}}
+              <label
+                for="data.abilities2.{{key}}.value"
+                class="resource-label rollable flexlarge align-left"
+                y
+                data-roll="(10*@abilities2.res.value)-d100"
+                data-label="{{ability.label}}"
+                >{{ability.label}}</label
+              >
+              {{/when}}
               <input
                 type="text"
                 name="data.abilities2.{{key}}.value"
@@ -352,6 +407,11 @@
       you need to pass the actor's roll data to the rollData property. --}}
       {{editor content=data.biography target="data.biography" rollData=rollData
       button=true owner=owner editable=editable}}
+    </div>
+
+    {{!-- Owned Skills Tab --}}
+    <div class="tab skills" data-group="primary" data-tab="skills">
+      {{> "systems/tos/templates/actor/parts/actor-skills.html"}}
     </div>
 
     {{!-- Owned Items Tab --}}
