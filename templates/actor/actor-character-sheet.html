@@ -411,7 +411,37 @@
 
     {{!-- Owned Skills Tab --}}
     <div class="tab skills" data-group="primary" data-tab="skills">
-      {{> "systems/tos/templates/actor/parts/actor-skills.html"}}
+      <section class="grid grid-3col">
+        <aside class="sidebar">
+          <label
+            for="data.abilities"
+            class="resource-label"
+            style="font-size: large"
+            >Skills</label
+          >
+          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+          use both the "grid" and "grid-Ncol" class where "N" can be any number
+          from 1 to 12 and will create that number of columns. --}}
+          <div class="abilities flexcol">
+            {{#each data.skillsdata as |skill key|}}
+            <div class="ability flexrow flex-group-center">
+              <label
+                for="data.skillsdata.{{key}}.value"
+                class="resource-label rollable flexlarge align-left"
+                y
+                data-roll="15+(10*@skillsdata.{{key}}.value)-d100"
+                data-label="{{skill.label}}"
+                >{{skill.label}}</label
+              >
+              <input
+                type="text"
+                name="data.skillsdata.{{key}}.value"
+                value="{{skill.value}}"
+                data-dtype="Number"
+              />
+            </div>
+            {{/each}}
+          </div>
     </div>
 
     {{!-- Owned Items Tab --}}

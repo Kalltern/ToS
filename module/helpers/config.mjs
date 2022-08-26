@@ -70,3 +70,5 @@ TOS.abilityAbbreviations2 = {
   vsg: "TOS.AbilityVsgAbbr",
   res: "TOS.AbilityResAbbr",
 };
+
+TOS.skills = {};

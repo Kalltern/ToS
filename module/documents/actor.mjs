@@ -93,7 +93,13 @@ export class TosActor extends Actor {
     }
 
     if (data.abilities2) {
-      for (let [k, v] of Object.entries(data.abilities)) {
+      for (let [k, v] of Object.entries(data.abilities2)) {
+        data[k] = foundry.utils.deepClone(v);
+      }
+    }
+
+    if (data.skillsdata) {
+      for (let [k, v] of Object.entries(data.skillsdata)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }

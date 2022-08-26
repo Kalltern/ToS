@@ -82,6 +82,9 @@ export class TosActorSheet extends ActorSheet {
     for (let [k, v] of Object.entries(context.data.abilities2)) {
       v.label = game.i18n.localize(CONFIG.TOS.abilities2[k]) ?? k;
     }
+    /*   for (let [k, v] of Object.entries(context.data.skillsdata)) {
+      v.label = game.i18n.localize(CONFIG.TOS.skillsdata[k]) ?? k;
+    }*/
   }
 
   /**
@@ -95,6 +98,7 @@ export class TosActorSheet extends ActorSheet {
     // Initialize containers.
     const gear = [];
     const features = [];
+    const skills = [];
     const spells = {
       Air: [],
       Earth: [],
@@ -119,6 +123,10 @@ export class TosActorSheet extends ActorSheet {
       else if (i.type === "feature") {
         features.push(i);
       }
+      // Append to skills.
+      else if (i.type === "skill") {
+        skills.push(i);
+      }
       // Append to spells.
       else if (i.type === "spell") {
         if (i.data.spellLevel != undefined) {
@@ -131,6 +139,7 @@ export class TosActorSheet extends ActorSheet {
     context.gear = gear;
     context.features = features;
     context.spells = spells;
+    context.skills = skills;
   }
 
   /* -------------------------------------------- */

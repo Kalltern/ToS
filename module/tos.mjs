@@ -66,6 +66,11 @@ Handlebars.registerHelper("toLowerCase", function (str) {
   return str.toLowerCase();
 });
 
+Handlebars.registerHelper("log", function (str) {
+  console.log(str);
+  return JSON.stringify(str);
+});
+
 Handlebars.registerHelper(
   "when",
   function (operand_1, operator, operand_2, options) {
