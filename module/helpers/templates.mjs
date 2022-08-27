@@ -8,7 +8,7 @@ export const preloadHandlebarsTemplates = async function () {
     // Actor partials.
     "systems/tos/templates/actor/parts/actor-features.html",
     "systems/tos/templates/actor/parts/actor-items.html",
-    "systems/tos/templates/actor/parts/actor-skills.html",
+
     "systems/tos/templates/actor/parts/actor-spells.html",
     "systems/tos/templates/actor/parts/actor-effects.html",
   ]);

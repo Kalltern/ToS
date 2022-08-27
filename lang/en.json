@@ -53,6 +53,9 @@
   "TOS.AbilityVsgAbbr": "vsg",
   "TOS.AbilityResAbbr": "res",
 
+  "TOS.SkillAcrobacy": "acrobacy",
+  "TOS.SkillAcroAbbr": "acrobacy",
+
   "TOS.EffectCreate": "Create Effect",
   "TOS.EffectToggle": "Toggle Effect",
   "TOS.EffectEdit": "Edit Effect",

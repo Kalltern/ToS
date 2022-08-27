@@ -98,8 +98,8 @@ export class TosActor extends Actor {
       }
     }
 
-    if (data.skillsdata) {
-      for (let [k, v] of Object.entries(data.skillsdata)) {
+    if (data.skillsdata.skills) {
+      for (let [k, v] of Object.entries(data.skillsdata.skills)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }

@@ -71,4 +71,10 @@ TOS.abilityAbbreviations2 = {
   res: "TOS.AbilityResAbbr",
 };
 
-TOS.skills = {};
+TOS.skills = {
+  acrobacy: "TOS.SkillAcrobacy",
+};
+
+TOS.skillsAbbreviations = {
+  acrobacy: "TOS.SkillAcroAbbr",
+};
