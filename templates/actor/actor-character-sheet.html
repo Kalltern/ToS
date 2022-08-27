@@ -411,9 +411,34 @@
 
     {{!-- Owned Skills Tab --}}
     <div class="tab skills" data-group="primary" data-tab="skills">
-      {{> "systems/tos/templates/actor/parts/actor-skills.html"}}
-    </div>
+      <label
+        for="data.skillsdata.skills"
+        class="resource-label"
+        style="font-size: large"
+        >Skills</label
+      >
 
+      <div class="skills flexcol">
+        {{#each data.skillsdata.skills as |skill key|}}
+        <div class="skill flexrow flex-group-center">
+          <label
+            for="data.skillsdata.skills.{{key}}.value"
+            class="resource-label rollable flexlarge align-left"
+            y
+            data-roll="15+(10*@skillsdata.skills.{{key}}.value)-d100"
+            data-label="{{skill.label}}"
+            >{{skill.label}}</label
+          >
+          <input
+            type="text"
+            name="data.skillsdata.skills.{{key}}.value"
+            value="{{skill.value}}"
+            data-dtype="Number"
+          />
+        </div>
+        {{/each}}
+      </div>
+    </div>
     {{!-- Owned Items Tab --}}
     <div class="tab items" data-group="primary" data-tab="items">
       {{> "systems/tos/templates/actor/parts/actor-items.html"}}
