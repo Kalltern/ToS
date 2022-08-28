@@ -48,10 +48,11 @@ export class TosActor extends Actor {
     const data = actorData.data;
 
     // Loop through ability scores, and add their modifiers to our sheet output.
-    /*  for (let [key, ability] of Object.entries(data.abilities)) {
+    for (let [key, skill] of Object.entries(data.skillsdata.skills)) {
       // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
-    }*/
+      let group = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85];
+      skill.rating = group[skill.value];
+    }
   }
 
   /**

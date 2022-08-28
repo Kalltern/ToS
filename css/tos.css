@@ -11,6 +11,32 @@
   cursor: pointer;
 }
 
+.krow {
+  width: 100%;
+  padding: 0 15px;
+}
+.kcol-md-3:first-child {
+  margin-left: -15px;
+}
+.kcol-md-3:last-child {
+  margin-right: -15px;
+}
+.kcol-md-3 {
+  width: 33.3%;
+  display: inline-block;
+}
+
+.kcol-md-6:nth-child(2n-1) {
+  margin-left: -15px;
+}
+.kcol-md-6:nth-child(2n) {
+  margin-right: -15px;
+}
+.kcol-md-6 {
+  width: 50%;
+  display: inline-block;
+}
+
 .grid,
 .grid-2col {
   display: grid;

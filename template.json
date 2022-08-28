@@ -121,18 +121,17 @@
           [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85]
         ],
         "skills": {
-          "acro": {
-            "value": 0,
-            "mod": 0,
-            "roll": "(@skills.group[0][@skill.value]+@abilities.dex.value*4+@skill.mod)-1d100"
+          "acrobacy": {
+            "value": 0
           },
           "athletics": {
-            "value": 0,
-            "roll": "(@dex.value*4+@skill.acrobacy.value+acrobacy.mod)-1d100"
+            "value": 0
           },
           "arcana": {
-            "value": 0,
-            "roll": "(@dex.value*4+@skill.acrobacy.value+acrobacy.mod)-1d100"
+            "value": 0
+          },
+          "smithing": {
+            "value": 0
           }
         }
       }

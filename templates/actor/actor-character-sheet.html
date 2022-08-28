@@ -413,26 +413,55 @@
     <div class="tab skills" data-group="primary" data-tab="skills">
       <label
         for="data.skillsdata.skills"
-        class="resource-label"
+        class="resource-label rollable flexlarge align-left"
         style="font-size: large"
         >Skills</label
       >
 
-      <div class="skills flexcol">
+      <!-- <style>
+        .krow {
+          width: 100%;
+          padding: 15px;
+        }
+        .kcol-md-3:nth-child(3n-2) {
+          margin-left: -15px;
+        }
+        .kcol-md-3:nth-child(3n) {
+          margin-right: -15px;
+        }
+        .kcol-md-3 {
+          width: 33.3%;
+          display: inline-block;
+        }
+      </style> -->
+      <div class="resources grid grid-4col">
         {{#each data.skillsdata.skills as |skill key|}}
-        <div class="skill flexrow flex-group-center">
+        <div>
           <label
             for="data.skillsdata.skills.{{key}}.value"
-            class="resource-label rollable flexlarge align-left"
+            class="resource-label rollable align-center"
             y
-            data-roll="15+(10*@skillsdata.skills.{{key}}.value)-d100"
+            style="display: block"
+            data-roll="{{skill.rating}}-1d100"
             data-label="{{skill.label}}"
             >{{skill.label}}</label
           >
+
           <input
             type="text"
+            class="align-center"
+            style="width: 45%"
             name="data.skillsdata.skills.{{key}}.value"
             value="{{skill.value}}"
+            data-dtype="Number"
+          />
+
+          <input
+            type="text"
+            class="align-center"
+            style="width: 45%"
+            name="data.skillsdata.skills.{{key}}.rating"
+            value="{{skill.rating}}"
             data-dtype="Number"
           />
         </div>
