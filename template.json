@@ -122,16 +122,20 @@
         ],
         "skills": {
           "acrobacy": {
-            "value": 0
+            "value": 0,
+            "id": 1
           },
           "athletics": {
-            "value": 0
+            "value": 0,
+            "id": 0
           },
           "arcana": {
-            "value": 0
+            "value": 0,
+            "id": 3
           },
           "smithing": {
-            "value": 0
+            "value": 0,
+            "id": 0
           }
         }
       }

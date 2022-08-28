@@ -48,10 +48,21 @@ export class TosActor extends Actor {
     const data = actorData.data;
 
     // Loop through ability scores, and add their modifiers to our sheet output.
+    // make combat group and group for other skills that use different array
+    const group = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85];
+    const attributes = Object.values(data.abilities);
+    const valuesOfAbilities = attributes.map((attribute) => attribute.value);
+    const luck = data.abilities2.lck.value;
+    const skillmod = 0;
+
+    //   const cgroup = [0, 20, 25, 30, 35, 45, 50, 55, 60, 70, 80];
     for (let [key, skill] of Object.entries(data.skillsdata.skills)) {
-      // Calculate the modifier using d20 rules.
-      let group = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85];
-      skill.rating = group[skill.value];
+      console.log(key, skill);
+
+      skill.rating =
+        group[skill.value] + valuesOfAbilities[skill.id] * 3 + luck + 0;
+
+      //    cskill.rating = cgroup[cskill.value];
     }
   }
 
