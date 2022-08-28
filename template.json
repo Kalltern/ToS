@@ -121,21 +121,157 @@
           [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85]
         ],
         "skills": {
+          "athletics": {
+            "value": 0,
+            "id": 0
+          },
+          "Muscles": {
+            "value": 0,
+            "id": 0
+          },
+          "smithing": {
+            "value": 0,
+            "id": 0
+          },
           "acrobacy": {
             "value": 0,
             "id": 1
           },
-          "athletics": {
+          "agility": {
             "value": 0,
-            "id": 0
+            "id": 1
+          },
+          "riding": {
+            "value": 0,
+            "id": 1
+          },
+          "pickpocketing": {
+            "value": 0,
+            "id": 1
+          },
+          "sailing": {
+            "value": 0,
+            "id": 1
+          },
+          "lockpicking": {
+            "value": 0,
+            "id": 1
+          },
+          "stealth": {
+            "value": 0,
+            "id": 1
+          },
+          "craft": {
+            "value": 0,
+            "id": 1
+          },
+          "drinking": {
+            "value": 0,
+            "id": 2
+          },
+          "alchemy": {
+            "value": 0,
+            "id": 3
           },
           "arcana": {
             "value": 0,
             "id": 3
           },
-          "smithing": {
+          "engineering": {
             "value": 0,
-            "id": 0
+            "id": 3
+          },
+          "logic": {
+            "value": 0,
+            "id": 3
+          },
+          "firstaid": {
+            "value": 0,
+            "id": 3
+          },
+          "tactics": {
+            "value": 0,
+            "id": 3
+          },
+          "research": {
+            "value": 0,
+            "id": 3
+          },
+          "art": {
+            "value": 0,
+            "id": 3
+          },
+          "dreamwalker": {
+            "value": 0,
+            "id": 4
+          },
+          "meditation": {
+            "value": 0,
+            "id": 4
+          },
+          "rituals": {
+            "value": 0,
+            "id": 4
+          },
+          "augury": {
+            "value": 0,
+            "id": 4
+          },
+          "lying": {
+            "value": 0,
+            "id": 5
+          },
+          "acting": {
+            "value": 0,
+            "id": 5
+          },
+          "music": {
+            "value": 0,
+            "id": 5
+          },
+          "painting": {
+            "value": 0,
+            "id": 5
+          },
+          "perusasion": {
+            "value": 0,
+            "id": 5
+          },
+          "seduction": {
+            "value": 0,
+            "id": 5
+          },
+          "leadership": {
+            "value": 0,
+            "id": 5
+          },
+          "animalhandling": {
+            "value": 0,
+            "id": 5
+          },
+          "intimidation": {
+            "value": 0,
+            "id": 5
+          },
+          "singing": {
+            "value": 0,
+            "id": 5
+          },
+          "herbalism": {
+            "value": 0,
+            "id": 6
+          },
+          "traps": {
+            "value": 0,
+            "id": 6
+          },
+          "survival": {
+            "value": 0,
+            "id": 6
+          },
+          "insight": {
+            "value": 0,
+            "id": 6
           }
         }
       }
