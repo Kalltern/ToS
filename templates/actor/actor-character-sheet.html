@@ -26,12 +26,14 @@
         will add a small amount of padding, a border, and will center all of its
         child elements content and text. --}}
         <div class="resource flex-group-center">
-          <label for="data.health.value" class="resource-label">Health</label>
+          <label for="actor.stats.hp.value" class="resource-label"
+            >Health</label
+          >
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="data.health.value"
-              value="{{data.health.value}}"
+              name="actor.stats.hp.value"
+              value="{{actor.stats.hp.value}}"
               data-dtype="Number"
             />
 
@@ -45,19 +47,19 @@
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.stamina.value" class="resource-label">Stamina</label>
+          <label for="data.sta.value" class="resource-label">Stamina</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="data.stamina.value"
+              name="data.sta.value"
               value="{{data.power.value}}"
               data-dtype="Number"
             />
 
             <input
               type="text"
-              name="data.stamina.max"
-              value="{{data.stamina.max}}"
+              name="data.sta.max"
+              value="{{data.sta.max}}"
               data-dtype="Number"
             />
           </div>

@@ -49,7 +49,17 @@ export class TosActor extends Actor {
 
     // Loop through ability scores, and add their modifiers to our sheet output.
     // make combat group and group for other skills that use different array
-    const group = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85];
+    const combat = [0, 20, 25, 30, 35, 45, 50, 55, 60, 70, 80]; // for melee combat both attack and deffense, for ranged combat just attack
+    const combatThrowAndDefense = [0, 10, 20, 25, 30, 35, 40, 45, 50, 55, 60]; // throw skill,  ranged defense from melee combat and ranged combat
+    const ranger = [0, 18, 21, 24, 27, 35, 38, 41, 44, 52, 60]; // only for melee
+    const group1 = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85]; //everything else
+    const group2 = [0, 5, 10, 15, 20, 30]; // muscles, nimbleness
+    const group3 = [0, 25, 40, 55, 70, 85]; //riding and sailing
+    const group4 = [0, 40, 65, 90]; //dancing, meditation
+    const group5 = [0, 10, 20, 30, 40, 50]; //drinking
+    const group6 = [0, 5, 10, 15, 20, 25]; //social
+    const group7 = [0, 20, 30, 40, 50, 60]; //survival
+
     const attributes = Object.values(data.abilities);
     const valuesOfAbilities = attributes.map((attribute) => attribute.value);
     const luck = data.abilities2.lck.value;
@@ -57,10 +67,28 @@ export class TosActor extends Actor {
 
     //   const cgroup = [0, 20, 25, 30, 35, 45, 50, 55, 60, 70, 80];
     for (let [key, skill] of Object.entries(data.skillsdata.skills)) {
-      console.log(key, skill);
-
-      skill.rating =
-        group[skill.value] + valuesOfAbilities[skill.id] * 3 + luck + 0;
+      if (skill.type === 1) {
+        skill.rating =
+          group1[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+      } else if (skill.type === 2) {
+        skill.rating =
+          group2[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+      } else if (skill.type === 3) {
+        skill.rating =
+          group3[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+      } else if (skill.type === 4) {
+        skill.rating =
+          group4[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+      } else if (skill.type === 5) {
+        skill.rating =
+          group5[skill.value] + valuesOfAbilities[skill.id] * 6 + 0;
+      } else if (skill.type === 6) {
+        skill.rating =
+          group6[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+      } else if (skill.type === 7) {
+        skill.rating =
+          group7[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+      }
 
       //    cskill.rating = cgroup[cskill.value];
     }

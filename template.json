@@ -4,14 +4,14 @@
     "templates": {
       "stats": {
         "hp": {
-          "value": 10,
+          "value": 0,
           "min": 0,
-          "max": 10
+          "max": 0
         },
         "sta": {
-          "value": 5,
+          "value": 0,
           "min": 0,
-          "max": 5
+          "max": 0
         },
         "tox": {
           "value": 5,
@@ -121,157 +121,200 @@
           [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85]
         ],
         "skills": {
-          "athletics": {
+          "Athletics": {
             "value": 0,
-            "id": 0
+            "id": 0,
+            "type": 1
           },
           "Muscles": {
             "value": 0,
-            "id": 0
+            "id": 0,
+            "type": 2
           },
-          "smithing": {
+          "Smithing": {
             "value": 0,
-            "id": 0
+            "id": 0,
+            "type": 1
           },
-          "acrobacy": {
+          "Acrobacy": {
             "value": 0,
-            "id": 1
+            "id": 1,
+            "type": 1
           },
-          "agility": {
+          "Nimbleness": {
             "value": 0,
-            "id": 1
+            "id": 1,
+            "type": 2
           },
-          "riding": {
+          "Riding": {
             "value": 0,
-            "id": 1
+            "id": 1,
+            "type": 3
           },
-          "pickpocketing": {
+          "Pickpocketing": {
             "value": 0,
-            "id": 1
+            "id": 1,
+            "type": 1
           },
-          "sailing": {
+          "Sailing": {
             "value": 0,
-            "id": 1
+            "id": 1,
+            "type": 3
           },
-          "lockpicking": {
+          "Lockpicking": {
             "value": 0,
-            "id": 1
+            "id": 1,
+            "type": 1
           },
-          "stealth": {
+          "Stealth": {
             "value": 0,
-            "id": 1
+            "id": 1,
+            "type": 1
           },
-          "craft": {
+          "Craft": {
             "value": 0,
-            "id": 1
+            "id": 1,
+            "type": 1
           },
-          "drinking": {
+          "Dancing": {
             "value": 0,
-            "id": 2
+            "id": 1,
+            "type": 4
           },
-          "alchemy": {
+          "Drinking": {
             "value": 0,
-            "id": 3
+            "id": 2,
+            "type": 5
           },
-          "arcana": {
+          "Alchemy": {
             "value": 0,
-            "id": 3
+            "id": 3,
+            "type": 1
           },
-          "engineering": {
+          "Arcana": {
             "value": 0,
-            "id": 3
+            "id": 3,
+            "type": 1
           },
-          "logic": {
+          "Engineering": {
             "value": 0,
-            "id": 3
+            "id": 3,
+            "type": 1
           },
-          "firstaid": {
+          "Logic": {
             "value": 0,
-            "id": 3
+            "id": 3,
+            "type": 1
           },
-          "tactics": {
+          "Firstaid": {
             "value": 0,
-            "id": 3
+            "id": 3,
+            "type": 1
           },
-          "research": {
+          "Tactics": {
             "value": 0,
-            "id": 3
+            "id": 3,
+            "type": 1
           },
-          "art": {
+          "Research": {
             "value": 0,
-            "id": 3
+            "id": 3,
+            "type": 1
           },
-          "dreamwalker": {
+          "Art": {
             "value": 0,
-            "id": 4
+            "id": 3,
+            "type": 1
           },
-          "meditation": {
+          "Dreamwalker": {
             "value": 0,
-            "id": 4
+            "id": 4,
+            "type": 1
           },
-          "rituals": {
+          "Meditation": {
             "value": 0,
-            "id": 4
+            "id": 4,
+            "type": 4
           },
-          "augury": {
+          "Rituals": {
             "value": 0,
-            "id": 4
+            "id": 4,
+            "type": 1
           },
-          "lying": {
+          "Augury": {
             "value": 0,
-            "id": 5
+            "id": 4,
+            "type": 1
           },
-          "acting": {
+          "Lying": {
             "value": 0,
-            "id": 5
+            "id": 5,
+            "type": 6
           },
-          "music": {
+          "Acting": {
             "value": 0,
-            "id": 5
+            "id": 5,
+            "type": 1
           },
-          "painting": {
+          "Music": {
             "value": 0,
-            "id": 5
+            "id": 5,
+            "type": 1
           },
-          "perusasion": {
+          "Painting": {
             "value": 0,
-            "id": 5
+            "id": 5,
+            "type": 1
           },
-          "seduction": {
+          "Perusasion": {
             "value": 0,
-            "id": 5
+            "id": 5,
+            "type": 6
           },
-          "leadership": {
+          "Seduction": {
             "value": 0,
-            "id": 5
+            "id": 5,
+            "type": 6
           },
-          "animalhandling": {
+          "Leadership": {
             "value": 0,
-            "id": 5
+            "id": 5,
+            "type": 1
           },
-          "intimidation": {
+          "Animalhandling": {
             "value": 0,
-            "id": 5
+            "id": 5,
+            "type": 1
           },
-          "singing": {
+          "Intimidation": {
             "value": 0,
-            "id": 5
+            "id": 5,
+            "type": 6
           },
-          "herbalism": {
+          "Singing": {
             "value": 0,
-            "id": 6
+            "id": 5,
+            "type": 1
           },
-          "traps": {
+          "Herbalism": {
             "value": 0,
-            "id": 6
+            "id": 6,
+            "type": 1
           },
-          "survival": {
+          "Traps": {
             "value": 0,
-            "id": 6
+            "id": 6,
+            "type": 1
           },
-          "insight": {
+          "Survival": {
             "value": 0,
-            "id": 6
+            "id": 6,
+            "type": 7
+          },
+          "Insight": {
+            "value": 0,
+            "id": 6,
+            "type": 6
           }
         }
       }
