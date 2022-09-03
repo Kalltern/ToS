@@ -85,6 +85,9 @@ export class TosActorSheet extends ActorSheet {
     for (let [k, v] of Object.entries(context.data.skillsdata.skills)) {
       v.label = game.i18n.localize(CONFIG.TOS.skills[k]) ?? k;
     }
+    for (let [k, v] of Object.entries(context.data.skillsdata.cskills)) {
+      v.label = game.i18n.localize(CONFIG.TOS.cskills[k]) ?? k;
+    }
   }
 
   /**

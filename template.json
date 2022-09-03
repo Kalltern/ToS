@@ -2,11 +2,11 @@
   "Actor": {
     "types": ["character", "npc"],
     "templates": {
-      "stats": {
+      "base": {
         "hp": {
-          "value": 0,
+          "value": 20,
           "min": 0,
-          "max": 0
+          "max": 20
         },
         "sta": {
           "value": 0,
@@ -18,7 +18,7 @@
           "min": 0,
           "max": 5
         },
-        "man": {
+        "mana": {
           "value": 5,
           "min": 0,
           "max": 5
@@ -28,7 +28,7 @@
           "min": 0,
           "max": 5
         },
-        "mh": {
+        "soulp": {
           "value": 5,
           "min": 0,
           "max": 5
@@ -48,7 +48,7 @@
           "min": 0,
           "max": 5
         },
-        "ln": {
+        "he": {
           "value": 5,
           "min": 0,
           "max": 5
@@ -89,20 +89,16 @@
       },
       "abilities2": {
         "fth": {
-          "value": 0,
-          "roll": "(8*@abilities2.fth.value)-d100"
+          "value": 0
         },
         "ini": {
-          "value": 0,
-          "roll": "d12+(@abilities2.ini.value)+(@abilities2.spd.value)"
+          "value": 0
         },
         "lck": {
-          "value": 0,
-          "roll": "50+(5*@abilities2.lck.value)-d100"
+          "value": 0
         },
         "sin": {
-          "value": 0,
-          "roll": "(10*@abilities2.res.value)-(3*@abilities2.sin.value)-d100"
+          "value": 0
         },
         "spd": {
           "value": 0
@@ -111,15 +107,10 @@
           "value": 0
         },
         "res": {
-          "value": 0,
-          "roll": "(10*@abilities2.res.value)-d100"
+          "value": 0
         }
       },
       "skillsdata": {
-        "group": [
-          [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85],
-          [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85]
-        ],
         "skills": {
           "Athletics": {
             "value": 0,
@@ -316,6 +307,34 @@
             "id": 6,
             "type": 6
           }
+        },
+        "cskills": {
+          "combat": { "value": 0 },
+          "archery": { "value": 0 },
+          "ranger": { "value": 0 },
+          "channeling": { "value": 0 },
+          "swords": { "value": 0 },
+          "axes": { "value": 0 },
+          "blunt": { "value": 0 },
+          "polearms": { "value": 0 },
+          "shieldbearer": { "value": 0 },
+          "reaver": { "value": 0 },
+          "swordsman": { "value": 0 },
+          "pikeman": { "value": 0 },
+          "dimakerus": { "value": 0 },
+          "duelist": { "value": 0 },
+          "monk": { "value": 0 },
+          "rogue": { "value": 0 },
+          "rider": { "value": 0 },
+          "archer": { "value": 0 },
+          "arbalest": { "value": 0 },
+          "peltast": { "value": 0 },
+          "juggler": { "value": 0 },
+          "musketeer": { "value": 0 },
+          "Elymas": { "value": 0 },
+          "Incantator": { "value": 0 },
+          "Veneficus": { "value": 0 },
+          "Elementalist": { "value": 0 }
         }
       }
     },
@@ -335,7 +354,8 @@
       "templates": ["base"],
       "quantity": 1,
       "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+      "formula": "d20 + @str.mod + ceil(@lvl / 2)",
+      "formula1": "d20 + @str.mod + ceil(@lvl / 2)"
     },
     "feature": {
       "templates": ["base"]

@@ -74,3 +74,7 @@ TOS.abilityAbbreviations2 = {
 TOS.skills = {};
 
 TOS.skillsAbbreviations = {};
+
+TOS.cskills = {};
+
+TOS.cskillsAbbreviations = {};
