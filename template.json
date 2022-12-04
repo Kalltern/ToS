@@ -312,10 +312,10 @@
           "Combat": { "value": 0, "id": 0, "type": 10 },
           "Defense": { "value": 0, "id": 1, "type": 10 },
           "Dodge": { "value": 0, "id": 1, "type": 14 },
-          "Ranged_defense": { "value": 0, "id": 16, "type": 11 },
+          "Ranged_defense": { "value": 0, "id": 6, "type": 11 },
           "Archery": { "value": 0, "id": 6, "type": 10 },
           "Ranger": { "value": 0, "id": 0, "type": 12 },
-          "Throw": { "value": 0, "id": 6, "type": 11 },
+          "Throw": { "value": 0, "id": 6, "type": 15 },
           "Channeling": { "value": 0, "id": 3, "type": 13 }
         },
         "doctrines": {

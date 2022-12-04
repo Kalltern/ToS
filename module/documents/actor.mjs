@@ -51,7 +51,7 @@ export class TosActor extends Actor {
     // Loop through ability scores, and add their modifiers to our sheet output.
     // make combat group and group for other skills that use different array
     const combatGroup = [0, 20, 25, 30, 35, 45, 50, 55, 60, 70, 80]; // for melee combat both attack and deffense, for ranged combat just attackand channeling
-    const combatThrowAndDefense = [0, 10, 20, 25, 30, 35, 40, 45, 50, 55, 60]; // throw skill,  ranged defense from melee combat and ranged combat
+    const rangedDefense = [0, 10, 20, 25, 30, 35, 40, 45, 50, 55, 60]; // throw skill,  ranged defense from melee combat and ranged combat
     const rangerGroup = [0, 20, 24, 28, 32, 42, 46, 51, 55, 65, 75]; // melee and ranged
     const group1 = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85]; //everything else
     const group2 = [0, 5, 10, 15, 20, 30]; // muscles, nimbleness
@@ -103,6 +103,8 @@ export class TosActor extends Actor {
               rangerGroup[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
             data.skillsdata.cskills.Archery.rating =
               rangerGroup[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+            data.skillsdata.cskills.Ranged_defense.rating =
+              rangedDefense[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
           } else {
             skill.rating =
               rangerGroup[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
@@ -110,6 +112,21 @@ export class TosActor extends Actor {
         } else if (skill.type === 14) {
           skill.rating =
             group1[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+        } else if (skill.type === 11) {
+          if (
+            data.skillsdata.cskills.Archery.value >
+            data.skillsdata.cskills.Combat.value
+          ) {
+            skill.rating =
+              rangedDefense[data.skillsdata.cskills.Archery.value] +
+              valuesOfAbilities[skill.id] * 3 +
+              0;
+          } else {
+            skill.rating =
+              rangedDefense[data.skillsdata.cskills.Combat.value] +
+              valuesOfAbilities[skill.id] * 3 +
+              0;
+          }
         }
       }
     }
