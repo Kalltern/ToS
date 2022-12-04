@@ -316,7 +316,7 @@
           "Archery": { "value": 0, "id": 6, "type": 10 },
           "Ranger": { "value": 0, "id": 0, "type": 12 },
           "Throw": { "value": 0, "id": 6, "type": 15 },
-          "Channeling": { "value": 0, "id": 3, "type": 13 }
+          "Channeling": { "value": 0, "id": 3, "type": 10 }
         },
         "doctrines": {
           "Swords": { "value": 0 },
@@ -350,29 +350,58 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "weapon", "armor", "feature", "spell"],
     "templates": {
       "base": {
         "description": ""
       }
     },
     "item": {
+      "templates": ["base"]
+    },
+    "weapon": {
       "templates": ["base"],
-      "quantity": 1,
+      "quantity": 0,
       "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)",
-      "formula1": "d20 + @str.mod + ceil(@lvl / 2)",
-      "axe": {
-        "templates": ["base"],
-        "quantity": 1,
-        "weight": 0,
-        "damaz": "2d6+2 + @str.mod",
-        "penec": "2",
-        "obrana": "5"
-      }
+      "type": "",
+      "requirements": "",
+      "damage": "",
+      "penetration": 0,
+      "bleed": 0,
+      "defense": 0,
+      "hit": 0,
+      "stun": 0,
+      "dodge": 0,
+      "crit_dodge": 0,
+      "crit_hit": 0,
+      "finesse": "",
+      "crit_reach": 0,
+      "breakthrough": 0,
+      "crit_defense": 0,
+      "sneak_damage": "",
+      "shield_burden": 0,
+      "attack_crit_fail": 0,
+
+      "formula": "d20 + @str.mod",
+      "formula2": "d20 + @dex.mod"
     },
     "feature": {
       "templates": ["base"]
+    },
+    "armor": {
+      "templates": ["base"],
+      "requirements": "",
+      "head": "",
+      "chest": "",
+      "limbs": "",
+      "layer": "",
+      "durability": "",
+      "defense": "",
+      "ranged_defense": "",
+      "crit_hit": "",
+      "dodge": "",
+      "crit_defense": "",
+      "crit_ranged_defense": ""
     },
     "spell": {
       "templates": ["base"],
