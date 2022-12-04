@@ -53,6 +53,7 @@ export class TosActor extends Actor {
     const combatGroup = [0, 20, 25, 30, 35, 45, 50, 55, 60, 70, 80]; // for melee combat both attack and deffense, for ranged combat just attackand channeling
     const rangedDefense = [0, 10, 20, 25, 30, 35, 40, 45, 50, 55, 60]; // throw skill,  ranged defense from melee combat and ranged combat
     const rangerGroup = [0, 20, 24, 28, 32, 42, 46, 51, 55, 65, 75]; // melee and ranged
+    const archerThrow = [0, 5, 10, 15, 20, 20, 20, 20, 20, 20, 20];
     const group1 = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85]; //everything else
     const group2 = [0, 5, 10, 15, 20, 30]; // muscles, nimbleness
     const group3 = [0, 25, 40, 55, 70, 85]; //riding and sailing
@@ -126,6 +127,13 @@ export class TosActor extends Actor {
               rangedDefense[data.skillsdata.cskills.Combat.value] +
               valuesOfAbilities[skill.id] * 3 +
               0;
+          }
+        } else if (skill.type === 15) {
+          {
+            skill.rating =
+              rangedDefense[data.skillsdata.cskills.Combat.value] +
+              archerThrow[data.skillsdata.cskills.Archery.value];
+            valuesOfAbilities[skill.id] * 3 + 0;
           }
         }
       }
