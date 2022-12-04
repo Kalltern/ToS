@@ -14,6 +14,12 @@
 .krow {
   width: 100%;
   padding: 0 15px;
+  display: table;
+}
+[class*="kcol-"] {
+  float: none;
+  display: table-cell;
+  vertical-align: top;
 }
 .kcol-md-3:first-child {
   margin-left: -15px;

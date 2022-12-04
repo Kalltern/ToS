@@ -78,3 +78,7 @@ TOS.skillsAbbreviations = {};
 TOS.cskills = {};
 
 TOS.cskillsAbbreviations = {};
+
+TOS.doctrines = {};
+
+TOS.doctrinesAbbreviations = {};

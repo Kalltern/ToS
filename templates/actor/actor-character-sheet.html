@@ -26,21 +26,19 @@
         will add a small amount of padding, a border, and will center all of its
         child elements content and text. --}}
         <div class="resource flex-group-center">
-          <label for="actor.stats.hp.value" class="resource-label"
-            >Health</label
-          >
+          <label for="data.hp.value" class="resource-label">Health</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="actor.stats.hp.value"
-              value="{{actor.stats.hp.value}}"
+              name="data.hp.value"
+              value="{{data.hp.value}}"
               data-dtype="Number"
             />
 
             <input
               type="text"
-              name="data.health.max"
-              value="{{data.health.max}}"
+              name="data.hp.max"
+              value="{{data.hp.max}}"
               data-dtype="Number"
             />
           </div>
@@ -52,7 +50,7 @@
             <input
               type="text"
               name="data.sta.value"
-              value="{{data.power.value}}"
+              value="{{data.sta.value}}"
               data-dtype="Number"
             />
 
@@ -66,40 +64,38 @@
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.toxicity.value" class="resource-label"
-            >Toxicity</label
-          >
+          <label for="data.tox.value" class="resource-label">Toxicity</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="data.toxicity.value"
-              value="{{data.power.value}}"
+              name="data.tox.value"
+              value="{{data.tox.value}}"
               data-dtype="Number"
             />
 
             <input
               type="text"
-              name="data.toxicity.max"
-              value="{{data.toxicity.max}}"
+              name="data.tox.max"
+              value="{{data.tox.max}}"
               data-dtype="Number"
             />
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.wounds.value" class="resource-label">Wounds</label>
+          <label for="data.sw.value" class="resource-label">Wounds</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="data.wounds.value"
-              value="{{data.power.value}}"
+              name="data.sw.value"
+              value="{{data.sw.value}}"
               data-dtype="Number"
             />
 
             <input
               type="text"
-              name="data.wounds.max"
-              value="{{data.wounds.max}}"
+              name="data.sw.max"
+              value="{{data.sw.max}}"
               data-dtype="Number"
             />
           </div>
@@ -111,7 +107,7 @@
             <input
               type="text"
               name="data.mana.value"
-              value="{{data.power.value}}"
+              value="{{data.mana.value}}"
               data-dtype="Number"
             />
 
@@ -125,98 +121,78 @@
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.holyenergy.value" class="resource-label"
-            >Holy Energy</label
-          >
+          <label for="data.he.value" class="resource-label">Holy Energy</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="data.holyenergy.value"
-              value="{{data.power.value}}"
+              name="data.he.value"
+              value="{{data.he.value}}"
               data-dtype="Number"
             />
 
             <input
               type="text"
-              name="data.holyenergy.max"
-              value="{{data.holyenergy.max}}"
+              name="data.he.max"
+              value="{{data.he.max}}"
               data-dtype="Number"
             />
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.insanity.value" class="resource-label"
-            >Insanity</label
-          >
+          <label for="data.san.value" class="resource-label">Insanity</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="data.insanity.value"
-              value="{{data.power.value}}"
+              name="data.san.value"
+              value="{{data.san.value}}"
               data-dtype="Number"
             />
 
             <input
               type="text"
-              name="data.insanity.max"
-              value="{{data.insanity.max}}"
+              name="data.san.max"
+              value="{{data.san.max}}"
               data-dtype="Number"
             />
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.soulpoints.value" class="resource-label"
+          <label for="data.soulp.value" class="resource-label"
             >Soul Points</label
           >
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="data.soulpoints.value"
-              value="{{data.power.value}}"
+              name="data.soulp.value"
+              value="{{data.soulp.value}}"
               data-dtype="Number"
             />
 
             <input
               type="text"
-              name="data.soulpoints.max"
-              value="{{data.soulpoints.max}}"
-              data-dtype="Number"
-            />
-          </div>
-        </div>
-
-        <div class="resource flex-group-center">
-          <label for="data.corruption.value" class="resource-label"
-            >Corruption</label
-          >
-          <div class="resource-content flexrow flex-center flex-between">
-            <input
-              type="text"
-              name="data.corruption.value"
-              value="{{data.power.value}}"
-              data-dtype="Number"
-            />
-
-            <input
-              type="text"
-              name="data.corruption.max"
-              value="{{data.corruption.max}}"
+              name="data.soulp.max"
+              value="{{data.soulp.max}}"
               data-dtype="Number"
             />
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.lifeneeds.value" class="resource-label"
-            >Life Needs</label
-          >
+          <label for="data.cor.value" class="resource-label">Corruption</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
-              name="data.lifeneeds.value"
-              value="{{data.power.value}}"
+              name="data.cor.value"
+              value="{{data.cor.value}}"
+              data-dtype="Number"
+            />
+
+            <input
+              type="text"
+              name="data.cor.max"
+              value="{{data.cor.max}}"
               data-dtype="Number"
             />
           </div>
@@ -269,6 +245,7 @@
     {{!-- Default tab is specified in actor-sheet.mjs --}}
     <a class="item" data-tab="features">Features</a>
     <a class="item" data-tab="skills">Skills</a>
+    <a class="item" data-tab="cskills">Combat Skills</a>
     <a class="item" data-tab="description">Description</a>
     <a class="item" data-tab="items">Items</a>
     <a class="item" data-tab="spells">Spells</a>
@@ -413,29 +390,6 @@
 
     {{!-- Owned Skills Tab --}}
     <div class="tab skills" data-group="primary" data-tab="skills">
-      <label
-        for="data.skillsdata.skills"
-        class="resource-label rollable flexlarge align-left"
-        style="font-size: large"
-        >Skills</label
-      >
-
-      <!-- <style>
-        .krow {
-          width: 100%;
-          padding: 15px;
-        }
-        .kcol-md-3:nth-child(3n-2) {
-          margin-left: -15px;
-        }
-        .kcol-md-3:nth-child(3n) {
-          margin-right: -15px;
-        }
-        .kcol-md-3 {
-          width: 33.3%;
-          display: inline-block;
-        }
-      </style> -->
       <div class="resources grid grid-4col">
         {{#each data.skillsdata.skills as |skill key|}}
         <div>
@@ -469,6 +423,76 @@
         </div>
         {{/each}}
       </div>
+    </div>
+    {{!-- Owned Combat Skills Tab --}}
+    <div class="tab skills" data-group="primary" data-tab="cskills">
+      <div class="resources krow">
+        <div class="resources kcol-md-6">
+          {{#each data.skillsdata.cskills as |cskill key| }} {{index}}
+          <div class="flexrow" style="justify-content: space-between">
+            <div>
+              <label
+                for="data.skillsdata.cskills.{{key}}.value"
+                class="resource-label rollable align-left"
+                y
+                data-roll="{{cskill.rating}}-1d100"
+                data-label="{{cskill.label}}"
+                >{{cskill.label}}</label
+              >
+            </div>
+            <div class="flexrow">
+              <input
+                type="text"
+                class="align-right"
+                style="width: 40px; text-align: center"
+                name="data.skillsdata.cskills.{{key}}.value"
+                value="{{cskill.value}}"
+                data-dtype="Number"
+              />
+            </div>
+          </div>
+          {{/each}}
+        </div>
+
+        <div class="resources kcol-md-6">
+          {{#each data.skillsdata.cskills as |cskill key| }} {{index}}
+          <div class="flexrow" style="justify-content: space-between">
+            <input
+              type="text"
+              class="align-center"
+              style="width: 40px; text-align: center"
+              name="data.skillsdata.cskills.{{key}}.rating"
+              value="{{cskill.rating}}"
+              data-dtype="Number"
+            />
+          </div>
+          {{/each}}
+        </div>
+      </div>
+
+      <section class="grid grid-3col">
+        <div class="doctrine flexcol">
+          {{#each data.skillsdata.doctrines as |doctrine key| }}
+          <div class="doctrine flexrow flex-group-left">
+            <label
+              for="data.skillsdata.doctrines.{{key}}.value"
+              class="resource-label rollable flexlarge align-left"
+              y
+              data-label="{{doctrine.label}}"
+              >{{doctrine.label}}</label
+            >
+
+            <input
+              type="text"
+              name="data.skillsdata.doctrines.{{key}}.value"
+              value="{{doctrine.value}}"
+              style="width: 40%; text-align: left"
+              data-dtype="Number"
+            />
+          </div>
+          {{/each}}
+        </div>
+      </section>
     </div>
     {{!-- Owned Items Tab --}}
     <div class="tab items" data-group="primary" data-tab="items">

@@ -41,6 +41,7 @@ export class TosActor extends Actor {
   /**
    * Prepare Character type specific data
    */
+  combatSkillEvaluation() {}
   _prepareCharacterData(actorData) {
     if (actorData.type !== "character") return;
 
@@ -49,9 +50,9 @@ export class TosActor extends Actor {
 
     // Loop through ability scores, and add their modifiers to our sheet output.
     // make combat group and group for other skills that use different array
-    const combat = [0, 20, 25, 30, 35, 45, 50, 55, 60, 70, 80]; // for melee combat both attack and deffense, for ranged combat just attack
+    const combatGroup = [0, 20, 25, 30, 35, 45, 50, 55, 60, 70, 80]; // for melee combat both attack and deffense, for ranged combat just attackand channeling
     const combatThrowAndDefense = [0, 10, 20, 25, 30, 35, 40, 45, 50, 55, 60]; // throw skill,  ranged defense from melee combat and ranged combat
-    const ranger = [0, 18, 21, 24, 27, 35, 38, 41, 44, 52, 60]; // only for melee
+    const rangerGroup = [0, 20, 24, 28, 32, 42, 46, 51, 55, 65, 75]; // melee and ranged
     const group1 = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85]; //everything else
     const group2 = [0, 5, 10, 15, 20, 30]; // muscles, nimbleness
     const group3 = [0, 25, 40, 55, 70, 85]; //riding and sailing
@@ -66,33 +67,66 @@ export class TosActor extends Actor {
     const skillmod = 0;
 
     //   const cgroup = [0, 20, 25, 30, 35, 45, 50, 55, 60, 70, 80];
-    for (let [key, skill] of Object.entries(data.skillsdata.skills)) {
-      if (skill.type === 1) {
-        skill.rating =
-          group1[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
-      } else if (skill.type === 2) {
-        skill.rating =
-          group2[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
-      } else if (skill.type === 3) {
-        skill.rating =
-          group3[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
-      } else if (skill.type === 4) {
-        skill.rating =
-          group4[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
-      } else if (skill.type === 5) {
-        skill.rating =
-          group5[skill.value] + valuesOfAbilities[skill.id] * 6 + 0;
-      } else if (skill.type === 6) {
-        skill.rating =
-          group6[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
-      } else if (skill.type === 7) {
-        skill.rating =
-          group7[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
-      }
+    let arrSkills = ["skills", "cskills"]; // this array is meant create link to json skills
+    for (let i = 0; i < arrSkills.length; i++) {
+      // this goes through whole array
 
-      //    cskill.rating = cgroup[cskill.value];
+      for (let [key, skill] of Object.entries(data.skillsdata[arrSkills[i]])) {
+        console.log(key, skill, arrSkills);
+        if (skill.type === 1) {
+          skill.rating =
+            group1[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+        } else if (skill.type === 2) {
+          skill.rating =
+            group2[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+        } else if (skill.type === 3) {
+          skill.rating =
+            group3[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+        } else if (skill.type === 4) {
+          skill.rating =
+            group4[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+        } else if (skill.type === 5) {
+          skill.rating =
+            group5[skill.value] + valuesOfAbilities[skill.id] * 6 + 0;
+        } else if (skill.type === 6) {
+          skill.rating =
+            group6[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+        } else if (skill.type === 7) {
+          skill.rating =
+            group7[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+        } else if (skill.type === 10) {
+          skill.rating =
+            combatGroup[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+        } else if (skill.type === 12) {
+          if (skill.value > 0) {
+            data.skillsdata.cskills.Combat.rating =
+              rangerGroup[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+            data.skillsdata.cskills.Archery.rating =
+              rangerGroup[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+          } else {
+            skill.rating =
+              rangerGroup[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+          }
+        } else if (skill.type === 14) {
+          skill.rating =
+            group1[skill.value] + valuesOfAbilities[skill.id] * 3 + 0;
+        }
+      }
     }
   }
+  //    cskill.rating = cgroup[cskill.value];
+
+  /*else if(cskill.type === 1) {         
+          
+      cskill.rating =
+        combatGroup[cskill.value] + valuesOfAbilities[cskill.id] * 3 + 0;
+      cskill.rating =
+        combatThrowAndDefense[cskill.value] +
+        valuesOfAbilities[cskill.id] * 3 +
+        0;}
+        
+        combatGroup[cskill.value] >= rangerGroup[cskill.value]
+        */
 
   /**
    * Prepare NPC type specific data.
@@ -133,7 +167,7 @@ export class TosActor extends Actor {
     }
 
     if (data.abilities2) {
-      for (let [k, v] of Object.entries(data.abilities)) {
+      for (let [k, v] of Object.entries(data.abilities2)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }
@@ -146,6 +180,16 @@ export class TosActor extends Actor {
 
     if (data.skillsdata.skills) {
       for (let [k, v] of Object.entries(data.skillsdata.skills)) {
+        data[k] = foundry.utils.deepClone(v);
+      }
+    }
+    if (data.skillsdata.cskills) {
+      for (let [k, v] of Object.entries(data.skillsdata.cskills)) {
+        data[k] = foundry.utils.deepClone(v);
+      }
+    }
+    if (data.skillsdata.doctrines) {
+      for (let [k, v] of Object.entries(data.skillsdata.doctrines)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }
