@@ -42,7 +42,7 @@ export class ToSActor extends Actor {
    * Prepare Character type specific data
    */
   _prepareCharacterData(actorData) {
-    if (actorData.type !== 'character') return;
+    if (actorData.type !== "character") return;
 
     // Make modifications to data here. For example:
     const systemData = actorData.system;
@@ -52,8 +52,6 @@ export class ToSActor extends Actor {
       // Calculate the modifier using d20 rules.
       ability.mod = Math.floor((ability.value - 10) / 2);
     }
-<<<<<<< Updated upstream
-=======
     for (let [key, skill] of Object.entries(systemData.skills)) {
       // Calculate the ability rating using ToS rules.
       skill.rating = Math.floor(15 + ability.value * 10);
@@ -70,14 +68,13 @@ export class ToSActor extends Actor {
       athletics: { value: 0, rating: 0, id: 0, type: 1 },
       // ... other skills
     };
->>>>>>> Stashed changes
   }
 
   /**
    * Prepare NPC type specific data.
    */
   _prepareNpcData(actorData) {
-    if (actorData.type !== 'npc') return;
+    if (actorData.type !== "npc") return;
 
     // Make modifications to data here. For example:
     const systemData = actorData.system;
@@ -102,7 +99,7 @@ export class ToSActor extends Actor {
    * Prepare character roll data.
    */
   _getCharacterRollData(data) {
-    if (this.type !== 'character') return;
+    if (this.type !== "character") return;
 
     // Copy the ability scores to the top level, so that rolls can use
     // formulas like `@str.mod + 4`.
@@ -122,7 +119,7 @@ export class ToSActor extends Actor {
    * Prepare NPC roll data.
    */
   _getNpcRollData(data) {
-    if (this.type !== 'npc') return;
+    if (this.type !== "npc") return;
 
     // Process additional NPC data here.
   }
