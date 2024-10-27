@@ -2,11 +2,12 @@
   "TOS": {
     "Ability": {
       "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
+      "End": { "long": "Endurance", "abbr": "end" },
       "Dex": { "long": "Dexterity", "abbr": "dex" },
       "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+      "Wil": { "long": "Will", "abbr": "wil" },
+      "Cha": { "long": "Charisma", "abbr": "cha" },
+      "Per": { "long": "Perception", "abbr": "per" }
     },
     "SheetLabels": {
       "Actor": "ToS Actor Sheet",
