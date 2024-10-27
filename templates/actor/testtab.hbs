@@ -64,14 +64,16 @@
         type="text"
         name="system.skills.{{key}}.value"
         value="{{skill.value}}"
-        class="skill-rating"
+        class="skill-value"
         data-dtype="Number"
       />
       <span
+        type="text"
         class="skill-mod rollable"
         data-action="roll"
         data-roll="{{skill.rating}}-1d100"
         data-label="system.skills.{{key}}.rating"
+        data-dtype="Number"
       >{{skill.rating}} <!-- Display the skill rating --> </span>
     </div>
     {{log system}}
