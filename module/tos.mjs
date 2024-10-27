@@ -1,26 +1,33 @@
 // Import document classes.
-import { TosActor } from "./documents/actor.mjs";
-import { TosItem } from "./documents/item.mjs";
+import { ToSActor } from './documents/actor.mjs';
+import { ToSItem } from './documents/item.mjs';
 // Import sheet classes.
-import { TosActorSheet } from "./sheets/actor-sheet.mjs";
-import { TosItemSheet } from "./sheets/item-sheet.mjs";
+import { ToSActorSheet } from './sheets/actor-sheet.mjs';
+import { ToSItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
-import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
-import { TOS } from "./helpers/config.mjs";
+import { TOS } from './helpers/config.mjs';
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */
 
-Hooks.once("init", async function () {
-  // Add utility classes to the global game object so that they're more easily
-  // accessible in global contexts.
-  game.tos = {
-    TosActor,
-    TosItem,
+// Add key classes to the global scope so they can be more easily used
+// by downstream developers
+globalThis.tos = {
+  documents: {
+    ToSActor,
+    ToSItem,
+  },
+  applications: {
+    ToSActorSheet,
+    ToSItemSheet,
+  },
+  utils: {
     rollItemMacro,
-  };
+  },
+};
 
+Hooks.once('init', function () {
   // Add custom constants for configuration.
   CONFIG.TOS = TOS;
 
@@ -29,84 +36,48 @@ Hooks.once("init", async function () {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: "1d12 + @abilities2.initiative + @abilities2.speed",
+    formula: '1d20 + @abilities.dex.mod',
     decimals: 2,
   };
 
   // Define custom Document classes
-  CONFIG.Actor.documentClass = TosActor;
-  CONFIG.Item.documentClass = TosItem;
+  CONFIG.Actor.documentClass = ToSActor;
+  CONFIG.Item.documentClass = ToSItem;
+
+  // Active Effects are never copied to the Actor,
+  // but will still apply to the Actor from within the Item
+  // if the transfer property on the Active Effect is true.
+  CONFIG.ActiveEffect.legacyTransferral = false;
 
   // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("tos", TosActorSheet, { makeDefault: true });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("tos", TosItemSheet, { makeDefault: true });
-
-  // Preload Handlebars templates.
-  return preloadHandlebarsTemplates();
+  Actors.unregisterSheet('core', ActorSheet);
+  Actors.registerSheet('tos', ToSActorSheet, {
+    makeDefault: true,
+    label: 'TOS.SheetLabels.Actor',
+  });
+  Items.unregisterSheet('core', ItemSheet);
+  Items.registerSheet('tos', ToSItemSheet, {
+    makeDefault: true,
+    label: 'TOS.SheetLabels.Item',
+  });
 });
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
 
-// If you need to add Handlebars helpers, here are a few useful examples:
-Handlebars.registerHelper("concat", function () {
-  var outStr = "";
-  for (var arg in arguments) {
-    if (typeof arguments[arg] != "object") {
-      outStr += arguments[arg];
-    }
-  }
-  return outStr;
-});
-
-Handlebars.registerHelper("toLowerCase", function (str) {
+// If you need to add Handlebars helpers, here is a useful example:
+Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();
 });
 
-Handlebars.registerHelper("log", function (str) {
-  console.log(str);
-  return JSON.stringify(str);
-});
-
-Handlebars.registerHelper(
-  "when",
-  function (operand_1, operator, operand_2, options) {
-    var operators = {
-        eq: function (l, r) {
-          return l == r;
-        },
-        noteq: function (l, r) {
-          return l != r;
-        },
-        gt: function (l, r) {
-          return Number(l) > Number(r);
-        },
-        or: function (l, r) {
-          return l || r;
-        },
-        and: function (l, r) {
-          return l && r;
-        },
-        "%": function (l, r) {
-          return l % r === 0;
-        },
-      },
-      result = operators[operator](operand_1, operand_2);
-
-    if (result) return options.fn(this);
-    else return options.inverse(this);
-  }
-);
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
-Hooks.once("ready", async function () {
+Hooks.once('ready', function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
+  Hooks.on('hotbarDrop', (bar, data, slot) => createDocMacro(data, slot));
 });
 
 /* -------------------------------------------- */
@@ -120,26 +91,29 @@ Hooks.once("ready", async function () {
  * @param {number} slot     The hotbar slot to use
  * @returns {Promise}
  */
-async function createItemMacro(data, slot) {
-  if (data.type !== "Item") return;
-  if (!("data" in data))
+async function createDocMacro(data, slot) {
+  // First, determine if this is a valid owned item.
+  if (data.type !== 'Item') return;
+  if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
     return ui.notifications.warn(
-      "You can only create macro buttons for owned Items"
+      'You can only create macro buttons for owned Items'
     );
-  const item = data.data;
+  }
+  // If it is, retrieve it based on the uuid.
+  const item = await Item.fromDropData(data);
 
-  // Create the macro command
-  const command = `game.tos.rollItemMacro("${item.name}");`;
+  // Create the macro command using the uuid.
+  const command = `game.tos.rollItemMacro("${data.uuid}");`;
   let macro = game.macros.find(
     (m) => m.name === item.name && m.command === command
   );
   if (!macro) {
     macro = await Macro.create({
       name: item.name,
-      type: "script",
+      type: 'script',
       img: item.img,
       command: command,
-      flags: { "tos.itemMacro": true },
+      flags: { 'tos.itemMacro': true },
     });
   }
   game.user.assignHotbarMacro(macro, slot);
@@ -149,20 +123,25 @@ async function createItemMacro(data, slot) {
 /**
  * Create a Macro from an Item drop.
  * Get an existing item macro if one exists, otherwise create a new one.
- * @param {string} itemName
- * @return {Promise}
+ * @param {string} itemUuid
  */
-function rollItemMacro(itemName) {
-  const speaker = ChatMessage.getSpeaker();
-  let actor;
-  if (speaker.token) actor = game.actors.tokens[speaker.token];
-  if (!actor) actor = game.actors.get(speaker.actor);
-  const item = actor ? actor.items.find((i) => i.name === itemName) : null;
-  if (!item)
-    return ui.notifications.warn(
-      `Your controlled Actor does not have an item named ${itemName}`
-    );
+function rollItemMacro(itemUuid) {
+  // Reconstruct the drop data so that we can load the item.
+  const dropData = {
+    type: 'Item',
+    uuid: itemUuid,
+  };
+  // Load the item from the uuid.
+  Item.fromDropData(dropData).then((item) => {
+    // Determine if the item loaded and if it's an owned item.
+    if (!item || !item.parent) {
+      const itemName = item?.name ?? itemUuid;
+      return ui.notifications.warn(
+        `Could not find item ${itemName}. You may need to delete and recreate this macro.`
+      );
+    }
 
-  // Trigger the item roll
-  return item.roll();
+    // Trigger the item roll
+    item.roll();
+  });
 }
