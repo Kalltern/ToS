@@ -1,11 +1,11 @@
 // Import document classes.
-import { ToSActor } from './documents/actor.mjs';
-import { ToSItem } from './documents/item.mjs';
+import { ToSActor } from "./documents/actor.mjs";
+import { ToSItem } from "./documents/item.mjs";
 // Import sheet classes.
-import { ToSActorSheet } from './sheets/actor-sheet.mjs';
-import { ToSItemSheet } from './sheets/item-sheet.mjs';
+import { ToSActorSheet } from "./sheets/actor-sheet.mjs";
+import { ToSItemSheet } from "./sheets/item-sheet.mjs";
 // Import helper/utility classes and constants.
-import { TOS } from './helpers/config.mjs';
+import { TOS } from "./helpers/config.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -27,7 +27,7 @@ globalThis.tos = {
   },
 };
 
-Hooks.once('init', function () {
+Hooks.once("init", function () {
   // Add custom constants for configuration.
   CONFIG.TOS = TOS;
 
@@ -36,8 +36,8 @@ Hooks.once('init', function () {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: '1d20 + @abilities.dex.mod',
-    decimals: 2,
+    formula: "1d12+5",
+    decimals: 0,
   };
 
   // Define custom Document classes
@@ -50,15 +50,15 @@ Hooks.once('init', function () {
   CONFIG.ActiveEffect.legacyTransferral = false;
 
   // Register sheet application classes
-  Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('tos', ToSActorSheet, {
+  Actors.unregisterSheet("core", ActorSheet);
+  Actors.registerSheet("tos", ToSActorSheet, {
     makeDefault: true,
-    label: 'TOS.SheetLabels.Actor',
+    label: "TOS.SheetLabels.Actor",
   });
-  Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('tos', ToSItemSheet, {
+  Items.unregisterSheet("core", ItemSheet);
+  Items.registerSheet("tos", ToSItemSheet, {
     makeDefault: true,
-    label: 'TOS.SheetLabels.Item',
+    label: "TOS.SheetLabels.Item",
   });
 });
 
@@ -67,7 +67,7 @@ Hooks.once('init', function () {
 /* -------------------------------------------- */
 
 // If you need to add Handlebars helpers, here is a useful example:
-Handlebars.registerHelper('toLowerCase', function (str) {
+Handlebars.registerHelper("toLowerCase", function (str) {
   return str.toLowerCase();
 });
 
@@ -75,9 +75,9 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
-Hooks.once('ready', function () {
+Hooks.once("ready", function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on('hotbarDrop', (bar, data, slot) => createDocMacro(data, slot));
+  Hooks.on("hotbarDrop", (bar, data, slot) => createDocMacro(data, slot));
 });
 
 /* -------------------------------------------- */
@@ -93,10 +93,10 @@ Hooks.once('ready', function () {
  */
 async function createDocMacro(data, slot) {
   // First, determine if this is a valid owned item.
-  if (data.type !== 'Item') return;
-  if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
+  if (data.type !== "Item") return;
+  if (!data.uuid.includes("Actor.") && !data.uuid.includes("Token.")) {
     return ui.notifications.warn(
-      'You can only create macro buttons for owned Items'
+      "You can only create macro buttons for owned Items"
     );
   }
   // If it is, retrieve it based on the uuid.
@@ -110,10 +110,10 @@ async function createDocMacro(data, slot) {
   if (!macro) {
     macro = await Macro.create({
       name: item.name,
-      type: 'script',
+      type: "script",
       img: item.img,
       command: command,
-      flags: { 'tos.itemMacro': true },
+      flags: { "tos.itemMacro": true },
     });
   }
   game.user.assignHotbarMacro(macro, slot);
@@ -128,7 +128,7 @@ async function createDocMacro(data, slot) {
 function rollItemMacro(itemUuid) {
   // Reconstruct the drop data so that we can load the item.
   const dropData = {
-    type: 'Item',
+    type: "Item",
     uuid: itemUuid,
   };
   // Load the item from the uuid.

@@ -49,9 +49,16 @@ export class ToSActor extends Actor {
 
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(systemData.abilities)) {
-      // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
+      // Calculate the ability rating using ToS rules.
+      ability.mod = Math.floor(15 + ability.value * 10);
     }
+    // Debugging: Log the abilities
+    console.log(systemData.abilities);
+    // Calculate endurance
+    const endurance = systemData.abilities.end.value; // Ensure endurance exists
+    console.log("Endurance value:", endurance); // Log endurance value
+    // Set health correctly under stats
+    systemData.stats.health.max += endurance * 5; // Set health based on endurance
   }
 
   /**
