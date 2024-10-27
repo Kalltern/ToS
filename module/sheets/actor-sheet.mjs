@@ -1,4 +1,4 @@
-import { prepareActiveEffectCategories } from '../helpers/effects.mjs';
+import { prepareActiveEffectCategories } from "../helpers/effects.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -16,10 +16,10 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['tos', 'actor'],
+    classes: ["tos", "actor"],
     position: {
-      width: 600,
-      height: 600,
+      width: 650,
+      height: 800,
     },
     actions: {
       onEditImage: this._onEditImage,
@@ -30,7 +30,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
       roll: this._onRoll,
     },
     // Custom property that's merged into `this.options`
-    dragDrop: [{ dragSelector: '[data-drag]', dropSelector: null }],
+    dragDrop: [{ dragSelector: "[data-drag]", dropSelector: null }],
     form: {
       submitOnChange: true,
     },
@@ -39,26 +39,29 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: 'systems/tos/templates/actor/header.hbs',
+      template: "systems/tos/templates/actor/header.hbs",
     },
     tabs: {
       // Foundry-provided generic template
-      template: 'templates/generic/tab-navigation.hbs',
+      template: "templates/generic/tab-navigation.hbs",
+    },
+    testtab: {
+      template: "systems/tos/templates/actor/testtab.hbs",
     },
     features: {
-      template: 'systems/tos/templates/actor/features.hbs',
+      template: "systems/tos/templates/actor/features.hbs",
     },
     biography: {
-      template: 'systems/tos/templates/actor/biography.hbs',
+      template: "systems/tos/templates/actor/biography.hbs",
     },
     gear: {
-      template: 'systems/tos/templates/actor/gear.hbs',
+      template: "systems/tos/templates/actor/gear.hbs",
     },
     spells: {
-      template: 'systems/tos/templates/actor/spells.hbs',
+      template: "systems/tos/templates/actor/spells.hbs",
     },
     effects: {
-      template: 'systems/tos/templates/actor/effects.hbs',
+      template: "systems/tos/templates/actor/effects.hbs",
     },
   };
 
@@ -66,16 +69,16 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     // Not all parts always render
-    options.parts = ['header', 'tabs', 'biography'];
+    options.parts = ["header", "tabs", "biography", "testtab"];
     // Don't show the other tabs if only limited view
     if (this.document.limited) return;
     // Control which parts show based on document subtype
     switch (this.document.type) {
-      case 'character':
-        options.parts.push('features', 'gear', 'spells', 'effects');
+      case "character":
+        options.parts.push("features", "gear", "spells", "effects");
         break;
-      case 'npc':
-        options.parts.push('gear', 'effects');
+      case "npc":
+        options.parts.push("gear", "effects");
         break;
     }
   }
@@ -109,12 +112,13 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _preparePartContext(partId, context) {
     switch (partId) {
-      case 'features':
-      case 'spells':
-      case 'gear':
+      case "features":
+      case "testtab":
+      case "spells":
+      case "gear":
         context.tab = context.tabs[partId];
         break;
-      case 'biography':
+      case "biography":
         context.tab = context.tabs[partId];
         // Enrich biography info for display
         // Enrichment turns text like `[[/r 1d20]]` into buttons
@@ -130,7 +134,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
           }
         );
         break;
-      case 'effects':
+      case "effects":
         context.tab = context.tabs[partId];
         // Prepare active effects
         context.effects = prepareActiveEffectCategories(
@@ -151,46 +155,50 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
    */
   _getTabs(parts) {
     // If you have sub-tabs this is necessary to change
-    const tabGroup = 'primary';
+    const tabGroup = "primary";
     // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'biography';
+    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = "biography";
     return parts.reduce((tabs, partId) => {
       const tab = {
-        cssClass: '',
+        cssClass: "",
         group: tabGroup,
         // Matches tab property to
-        id: '',
+        id: "",
         // FontAwesome Icon, if you so choose
-        icon: '',
+        icon: "",
         // Run through localization
-        label: 'TOS.Actor.Tabs.',
+        label: "TOS.Actor.Tabs.",
       };
       switch (partId) {
-        case 'header':
-        case 'tabs':
+        case "header":
+        case "tabs":
           return tabs;
-        case 'biography':
-          tab.id = 'biography';
-          tab.label += 'Biography';
+        case "biography":
+          tab.id = "biography";
+          tab.label += "Biography";
           break;
-        case 'features':
-          tab.id = 'features';
-          tab.label += 'Features';
+        case "testtab":
+          tab.id = "testtab";
+          tab.label += "TestTab";
           break;
-        case 'gear':
-          tab.id = 'gear';
-          tab.label += 'Gear';
+        case "features":
+          tab.id = "features";
+          tab.label += "Features";
           break;
-        case 'spells':
-          tab.id = 'spells';
-          tab.label += 'Spells';
+        case "gear":
+          tab.id = "gear";
+          tab.label += "Gear";
           break;
-        case 'effects':
-          tab.id = 'effects';
-          tab.label += 'Effects';
+        case "spells":
+          tab.id = "spells";
+          tab.label += "Spells";
+          break;
+        case "effects":
+          tab.id = "effects";
+          tab.label += "Effects";
           break;
       }
-      if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
+      if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = "active";
       tabs[partId] = tab;
       return tabs;
     }, {});
@@ -224,15 +232,15 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     // Iterate through items, allocating to containers
     for (let i of this.document.items) {
       // Append to gear.
-      if (i.type === 'gear') {
+      if (i.type === "gear") {
         gear.push(i);
       }
       // Append to features.
-      else if (i.type === 'feature') {
+      else if (i.type === "feature") {
         features.push(i);
       }
       // Append to spells.
-      else if (i.type === 'spell') {
+      else if (i.type === "spell") {
         if (i.system.spellLevel != undefined) {
           spells[i.system.spellLevel].push(i);
         }
@@ -288,7 +296,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
       {};
     const fp = new FilePicker({
       current,
-      type: 'image',
+      type: "image",
       redirectToRoot: img ? [img] : [],
       callback: (path) => {
         this.document.update({ [attr]: path });
@@ -347,7 +355,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     // Loop through the dataset and add it to our docData
     for (const [dataKey, value] of Object.entries(target.dataset)) {
       // These data attributes are reserved for the action handling
-      if (['action', 'documentClass'].includes(dataKey)) continue;
+      if (["action", "documentClass"].includes(dataKey)) continue;
       // Nested properties require dot notation in the HTML, e.g. anything with `system`
       // An example exists in spells.hbs, with `data-system.spell-level`
       // which turns into the dataKey 'system.spellLevel'
@@ -385,19 +393,19 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
 
     // Handle item rolls.
     switch (dataset.rollType) {
-      case 'item':
+      case "item":
         const item = this._getEmbeddedDocument(target);
         if (item) return item.roll();
     }
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+      let label = dataset.label ? `[ability] ${dataset.label}` : "";
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       await roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label,
-        rollMode: game.settings.get('core', 'rollMode'),
+        rollMode: game.settings.get("core", "rollMode"),
       });
       return roll;
     }
@@ -412,16 +420,16 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {Item | ActiveEffect} The embedded Item or ActiveEffect
    */
   _getEmbeddedDocument(target) {
-    const docRow = target.closest('li[data-document-class]');
-    if (docRow.dataset.documentClass === 'Item') {
+    const docRow = target.closest("li[data-document-class]");
+    if (docRow.dataset.documentClass === "Item") {
       return this.actor.items.get(docRow.dataset.itemId);
-    } else if (docRow.dataset.documentClass === 'ActiveEffect') {
+    } else if (docRow.dataset.documentClass === "ActiveEffect") {
       const parent =
         docRow.dataset.parentId === this.actor.id
           ? this.actor
           : this.actor.items.get(docRow?.dataset.parentId);
       return parent.effects.get(docRow?.dataset.effectId);
-    } else return console.warn('Could not find document class');
+    } else return console.warn("Could not find document class");
   }
 
   /***************
@@ -458,8 +466,8 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   _onDragStart(event) {
-    const docRow = event.currentTarget.closest('li');
-    if ('link' in event.target.dataset) return;
+    const docRow = event.currentTarget.closest("li");
+    if ("link" in event.target.dataset) return;
 
     // Chained operation
     let dragData = this._getEmbeddedDocument(docRow)?.toDragData();
@@ -467,7 +475,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     if (!dragData) return;
 
     // Set data transfer
-    event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
+    event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
   }
 
   /**
@@ -485,18 +493,18 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
   async _onDrop(event) {
     const data = TextEditor.getDragEventData(event);
     const actor = this.actor;
-    const allowed = Hooks.call('dropActorSheetData', actor, this, data);
+    const allowed = Hooks.call("dropActorSheetData", actor, this, data);
     if (allowed === false) return;
 
     // Handle different data types
     switch (data.type) {
-      case 'ActiveEffect':
+      case "ActiveEffect":
         return this._onDropActiveEffect(event, data);
-      case 'Actor':
+      case "Actor":
         return this._onDropActor(event, data);
-      case 'Item':
+      case "Item":
         return this._onDropItem(event, data);
-      case 'Folder':
+      case "Folder":
         return this._onDropFolder(event, data);
     }
   }
@@ -509,7 +517,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   async _onDropActiveEffect(event, data) {
-    const aeCls = getDocumentClass('ActiveEffect');
+    const aeCls = getDocumentClass("ActiveEffect");
     const effect = await aeCls.fromDropData(data);
     if (!this.actor.isOwner || !effect) return false;
     if (effect.target === this.actor)
@@ -525,7 +533,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
    */
   async _onSortActiveEffect(event, effect) {
     /** @type {HTMLElement} */
-    const dropTarget = event.target.closest('[data-effect-id]');
+    const dropTarget = event.target.closest("[data-effect-id]");
     if (!dropTarget) return;
     const target = this._getEmbeddedDocument(dropTarget);
 
@@ -570,11 +578,11 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     for (const [itemId, updates] of Object.entries(grandchildUpdateData)) {
       await this.actor.items
         .get(itemId)
-        .updateEmbeddedDocuments('ActiveEffect', updates);
+        .updateEmbeddedDocuments("ActiveEffect", updates);
     }
 
     // Update on the main actor
-    return this.actor.updateEmbeddedDocuments('ActiveEffect', directUpdates);
+    return this.actor.updateEmbeddedDocuments("ActiveEffect", directUpdates);
   }
 
   /**
@@ -621,7 +629,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
   async _onDropFolder(event, data) {
     if (!this.actor.isOwner) return [];
     const folder = await Folder.implementation.fromDropData(data);
-    if (folder.type !== 'Item') return [];
+    if (folder.type !== "Item") return [];
     const droppedItemData = await Promise.all(
       folder.contents.map(async (item) => {
         if (!(document instanceof Item)) item = await fromUuid(item.uuid);
@@ -641,7 +649,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
    */
   async _onDropItemCreate(itemData, event) {
     itemData = itemData instanceof Array ? itemData : [itemData];
-    return this.actor.createEmbeddedDocuments('Item', itemData);
+    return this.actor.createEmbeddedDocuments("Item", itemData);
   }
 
   /**
@@ -653,7 +661,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
   _onSortItem(event, item) {
     // Get the drag source and drop target
     const items = this.actor.items;
-    const dropTarget = event.target.closest('[data-item-id]');
+    const dropTarget = event.target.closest("[data-item-id]");
     if (!dropTarget) return;
     const target = items.get(dropTarget.dataset.itemId);
 
@@ -680,7 +688,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     });
 
     // Perform the update
-    return this.actor.updateEmbeddedDocuments('Item', updateData);
+    return this.actor.updateEmbeddedDocuments("Item", updateData);
   }
 
   /** The following pieces set up drag handling and are unlikely to need modification  */

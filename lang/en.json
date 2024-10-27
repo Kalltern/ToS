@@ -2,11 +2,12 @@
   "TOS": {
     "Ability": {
       "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
+      "End": { "long": "Endurance", "abbr": "end" },
       "Dex": { "long": "Dexterity", "abbr": "dex" },
       "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+      "Wil": { "long": "Will", "abbr": "wil" },
+      "Cha": { "long": "Charisma", "abbr": "cha" },
+      "Per": { "long": "Perception", "abbr": "per" }
     },
     "SheetLabels": {
       "Actor": "ToS Actor Sheet",
@@ -15,6 +16,7 @@
     "Actor": {
       "Tabs": {
         "Biography": "Biography",
+        "TestTab": "TestTab",
         "Features": "Features",
         "Gear": "Gear",
         "Spells": "Spells",
@@ -22,27 +24,26 @@
       },
       "base": {
         "FIELDS": {
-          "biography": {"label": "Biography"},
-          "health": {
-            "value": {"label": "Health"},
-            "max": {"label": "Maximum Health"}
-          },
-          "power": {
-            "value": {"label": "Power"},
-            "max": {"label": "Maximum Power"}
-          }
+          "biography": { "label": "Biography" }
         }
       },
       "Character": {
-        "FIELDS": {
-          "attributes.level.value": {"label": "Level"}
+        "stats": {
+          "health": {
+            "value": { "label": "Health" },
+            "max": { "label": "Maximum Health" }
+          },
+          "mana": {
+            "value": { "label": "Mana" },
+            "max": { "label": "Maximum Mana" }
+          }
         }
       },
       "NPC": {
         "FIELDS": {
-          "cr": {"label": "CR"}
+          "cr": { "label": "CR" }
         },
-        "xp": {"label": "XP"}
+        "xp": { "label": "XP" }
       }
     },
     "Item": {
@@ -52,16 +53,6 @@
         "Effects": "Effects"
       },
       "Gear": {
-        "FIELDS": {
-          "rollFormula": {"label": "Roll Formula"},
-          "numDice": {"label": "Number of Dice"},
-          "dieSize": {"label": "Die Size"},
-          "rollMod": {"label": "Roll Modifier"},
-          "quantity": {"label": "Quantity"},
-          "weight": {"label": "Weight"}
-        }
-      },
-      "Race": {
         "FIELDS": {
           "rollFormula": { "label": "Roll Formula" },
           "numDice": { "label": "Number of Dice" },
@@ -73,7 +64,7 @@
       },
       "Spell": {
         "FIELDS": {
-          "level": {"label": "Spell Level"}
+          "level": { "label": "Spell Level" }
         },
         "SpellLVL": "Level {level} Spells",
         "AddLVL": "Add LVL {level}"
@@ -94,7 +85,6 @@
     },
     "Item": {
       "gear": "Gear",
-      "race": "Race",
       "feature": "Feature",
       "spell": "Spell"
     }
