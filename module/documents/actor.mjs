@@ -52,6 +52,25 @@ export class ToSActor extends Actor {
       // Calculate the modifier using d20 rules.
       ability.mod = Math.floor((ability.value - 10) / 2);
     }
+<<<<<<< Updated upstream
+=======
+    for (let [key, skill] of Object.entries(systemData.skills)) {
+      // Calculate the ability rating using ToS rules.
+      skill.rating = Math.floor(15 + ability.value * 10);
+    }
+    // Debugging: Log the abilities
+    console.log(systemData.abilities);
+    // Calculate endurance
+    const endurance = systemData.abilities.end.value; // Ensure endurance exists
+    console.log("Endurance value:", endurance); // Log endurance value
+    // Set health correctly under stats
+    systemData.stats.health.max += endurance * 5; // Set health based on endurance
+
+    systemData.skills = {
+      athletics: { value: 0, rating: 0, id: 0, type: 1 },
+      // ... other skills
+    };
+>>>>>>> Stashed changes
   }
 
   /**

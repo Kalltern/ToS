@@ -61,6 +61,16 @@
           "weight": {"label": "Weight"}
         }
       },
+      "Race": {
+        "FIELDS": {
+          "rollFormula": { "label": "Roll Formula" },
+          "numDice": { "label": "Number of Dice" },
+          "dieSize": { "label": "Die Size" },
+          "rollMod": { "label": "Roll Modifier" },
+          "quantity": { "label": "Quantity" },
+          "weight": { "label": "Weight" }
+        }
+      },
       "Spell": {
         "FIELDS": {
           "level": {"label": "Spell Level"}
@@ -84,6 +94,7 @@
     },
     "Item": {
       "gear": "Gear",
+      "race": "Race",
       "feature": "Feature",
       "spell": "Spell"
     }
