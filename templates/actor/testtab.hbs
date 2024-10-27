@@ -1,0 +1,55 @@
+{{! Features Tab }}
+<section
+  class="tab testtab {{tab.cssClass}}"
+  data-group="primary"
+  data-tab="testtab"
+>
+  <section class="grid grid-3col">
+
+    {{! The grid classes are defined in scss/global/_grid.scss. To use,
+          use both the "grid" and "grid-Ncol" class where "N" can be any number
+          from 1 to 12 and will create that number of columns.  }}
+
+    <div class="resource flex-group-center">
+      <label for="system.stats.health.value" class="resource-label">
+        {{localize "TOS.Actor.Character.stats.health.value.label"}}
+      </label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input
+          type="text"
+          name="system.Character.stats.health.value"
+          value="{{system.Character.stats.health.value}}"
+          data-dtype="Number"
+        />
+        <span> / </span>
+        <input
+          type="text"
+          name="system.Character.stats.max"
+          value="{{system.Character.stats.health.max}}"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+
+    <div class="resource flex-group-center">
+      <label for="system.Character.stats.value" class="resource-label">
+        {{localize "TOS.Actor.Character.stats.mana.value.label"}}
+      </label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input
+          type="text"
+          name="system.Character.stats.mana.value"
+          value="{{system.Character.stats.mana.value}}"
+          data-dtype="Number"
+        />
+        <span> / </span>
+        <input
+          type="text"
+          name="system.Character.stats.mana.max"
+          value="{{system.Character.stats.mana.max}}"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+  </section>
+</section>

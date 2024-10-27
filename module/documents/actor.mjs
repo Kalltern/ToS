@@ -42,7 +42,7 @@ export class ToSActor extends Actor {
    * Prepare Character type specific data
    */
   _prepareCharacterData(actorData) {
-    if (actorData.type !== 'character') return;
+    if (actorData.type !== "character") return;
 
     // Make modifications to data here. For example:
     const systemData = actorData.system;
@@ -58,7 +58,7 @@ export class ToSActor extends Actor {
    * Prepare NPC type specific data.
    */
   _prepareNpcData(actorData) {
-    if (actorData.type !== 'npc') return;
+    if (actorData.type !== "npc") return;
 
     // Make modifications to data here. For example:
     const systemData = actorData.system;
@@ -83,7 +83,7 @@ export class ToSActor extends Actor {
    * Prepare character roll data.
    */
   _getCharacterRollData(data) {
-    if (this.type !== 'character') return;
+    if (this.type !== "character") return;
 
     // Copy the ability scores to the top level, so that rolls can use
     // formulas like `@str.mod + 4`.
@@ -92,18 +92,13 @@ export class ToSActor extends Actor {
         data[k] = foundry.utils.deepClone(v);
       }
     }
-
-    // Add level for easier access, or fall back to 0.
-    if (data.attributes.level) {
-      data.lvl = data.attributes.level.value ?? 0;
-    }
   }
 
   /**
    * Prepare NPC roll data.
    */
   _getNpcRollData(data) {
-    if (this.type !== 'npc') return;
+    if (this.type !== "npc") return;
 
     // Process additional NPC data here.
   }
