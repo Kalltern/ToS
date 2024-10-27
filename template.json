@@ -1,54 +1,15 @@
 {
   "Actor": {
     "types": ["character", "npc"],
+    "htmlFields": ["biography"],
     "templates": {
-      "stats": {
-        "hp": {
+      "base": {
+        "health": {
           "value": 10,
           "min": 0,
           "max": 10
         },
-        "sta": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "tox": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "man": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "sw": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "mh": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "san": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "cor": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "fat": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "ln": {
+        "power": {
           "value": 5,
           "min": 0,
           "max": 5
@@ -63,104 +24,48 @@
           "value": 1
         }
       },
-
       "abilities": {
         "str": {
-          "value": 1
+          "value": 10
         },
         "dex": {
-          "value": 1
+          "value": 10
         },
-        "end": {
-          "value": 1
+        "con": {
+          "value": 10
         },
         "int": {
-          "value": 1
+          "value": 10
         },
-        "wil": {
-          "value": 1
+        "wis": {
+          "value": 10
         },
         "cha": {
-          "value": 1
-        },
-        "per": {
-          "value": 1
+          "value": 10
         }
-      },
-      "abilities2": {
-        "fth": {
-          "value": 0,
-          "roll": "(8*@abilities2.fth.value)-d100"
-        },
-        "ini": {
-          "value": 0,
-          "roll": "d12+(@abilities2.ini.value)+(@abilities2.spd.value)"
-        },
-        "lck": {
-          "value": 0,
-          "roll": "50+(5*@abilities2.lck.value)-d100"
-        },
-        "sin": {
-          "value": 0,
-          "roll": "(10*@abilities2.res.value)-(3*@abilities2.sin.value)-d100"
-        },
-        "spd": {
-          "value": 0
-        },
-        "vsg": {
-          "value": 0
-        },
-        "res": {
-          "value": 0,
-          "roll": "(10*@abilities2.res.value)-d100"
-        }
-      },
-      "skillsdata": {
-        "group": [
-          [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85],
-          [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85]
-        ],
-        "skills": {
-          "acrobacy": {
-            "value": 0,
-            "mod": 0,
-            "roll": "(@skills.group[0][@skill.value]+@abilities.dex.value*4+@skill.mod)-1d100"
-          },
-          "bacrobacy": {
-            "value": 0,
-            "roll": "(@dex.value*4+@skill.acrobacy.value+acrobacy.mod)-1d100"
-          },
-          "athletics": {
-            "value": 0,
-            "roll": "(@dex.value*4+@skill.acrobacy.value+acrobacy.mod)-1d100"
-          },
-          "arcana": {
-            "value": 0,
-            "roll": "(@dex.value*4+@skill.acrobacy.value+acrobacy.mod)-1d100"
-          }
-        }
-      },
-      "npc": {
-        "templates": ["base"],
-        "cr": 0
       }
     },
-    "Item": {
-      "types": ["item", "feature", "spell"],
-      "templates": {
-        "base": {
-          "description": ""
-        }
-      },
-      "item": {
-        "templates": ["base"],
-        "quantity": 1,
-        "weight": 0,
-        "formula": "d20 + @str.mod + ceil(@lvl / 2)"
-      },
-      "feature": {
-        "templates": ["base"]
+    "npc": {
+      "templates": ["base"],
+      "cr": 0
+    }
+  },
+  "Item": {
+    "types": ["gear", "feature", "spell"],
+    "htmlFields": ["description"],
+    "templates": {
+      "base": {
+        "description": ""
       }
+    },
+    "gear": {
+      "templates": ["base"],
+      "quantity": 1,
+      "weight": 0,
+      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+    },
+    "feature": {
+      "templates": ["base"]
     },
     "spell": {
       "templates": ["base"],

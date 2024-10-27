@@ -2,7 +2,7 @@
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
-export class TosActor extends Actor {
+export class ToSActor extends Actor {
   /** @override */
   prepareData() {
     // Prepare data for the actor. Calling the super version of this executes
@@ -20,7 +20,7 @@ export class TosActor extends Actor {
 
   /**
    * @override
-   * Augment the basic actor data with additional dynamic data. Typically,
+   * Augment the actor source data with additional dynamic data. Typically,
    * you'll want to handle most of your calculated/derived data in this step.
    * Data calculated in this step should generally not exist in template.json
    * (such as ability modifiers rather than ability scores) and should be
@@ -28,8 +28,8 @@ export class TosActor extends Actor {
    * is queried and has a roll executed directly from it).
    */
   prepareDerivedData() {
-    const actorData = this.data;
-    const data = actorData.data;
+    const actorData = this;
+    const systemData = actorData.system;
     const flags = actorData.flags.tos || {};
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
@@ -42,34 +42,35 @@ export class TosActor extends Actor {
    * Prepare Character type specific data
    */
   _prepareCharacterData(actorData) {
-    if (actorData.type !== "character") return;
+    if (actorData.type !== 'character') return;
 
     // Make modifications to data here. For example:
-    const data = actorData.data;
+    const systemData = actorData.system;
 
     // Loop through ability scores, and add their modifiers to our sheet output.
-    /*  for (let [key, ability] of Object.entries(data.abilities)) {
+    for (let [key, ability] of Object.entries(systemData.abilities)) {
       // Calculate the modifier using d20 rules.
       ability.mod = Math.floor((ability.value - 10) / 2);
-    }*/
+    }
   }
 
   /**
    * Prepare NPC type specific data.
    */
   _prepareNpcData(actorData) {
-    if (actorData.type !== "npc") return;
+    if (actorData.type !== 'npc') return;
 
     // Make modifications to data here. For example:
-    const data = actorData.data;
-    data.xp = data.cr * data.cr * 100;
+    const systemData = actorData.system;
+    systemData.xp = systemData.cr * systemData.cr * 100;
   }
 
   /**
    * Override getRollData() that's supplied to rolls.
    */
   getRollData() {
-    const data = super.getRollData();
+    // Starts off by populating the roll data with a shallow copy of `this.system`
+    const data = { ...this.system };
 
     // Prepare character roll data.
     this._getCharacterRollData(data);
@@ -82,30 +83,12 @@ export class TosActor extends Actor {
    * Prepare character roll data.
    */
   _getCharacterRollData(data) {
-    if (this.data.type !== "character") return;
+    if (this.type !== 'character') return;
 
     // Copy the ability scores to the top level, so that rolls can use
     // formulas like `@str.mod + 4`.
     if (data.abilities) {
       for (let [k, v] of Object.entries(data.abilities)) {
-        data[k] = foundry.utils.deepClone(v);
-      }
-    }
-
-    if (data.abilities2) {
-      for (let [k, v] of Object.entries(data.abilities2)) {
-        data[k] = foundry.utils.deepClone(v);
-      }
-    }
-
-    if (data.skillsdata.skills) {
-      for (let [k, v] of Object.entries(data.skillsdata.skills)) {
-        data[k] = foundry.utils.deepClone(v);
-      }
-    }
-
-    if (data.stats) {
-      for (let [k, v] of Object.entries(data.stats)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }
@@ -120,7 +103,7 @@ export class TosActor extends Actor {
    * Prepare NPC roll data.
    */
   _getNpcRollData(data) {
-    if (this.data.type !== "npc") return;
+    if (this.type !== 'npc') return;
 
     // Process additional NPC data here.
   }

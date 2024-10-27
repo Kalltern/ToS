@@ -1,23 +1,18 @@
 {
   "name": "tos",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "CSS compiler for the ToS system",
   "scripts": {
-    "build": "gulp build",
-    "compile": "gulp css",
-    "watch": "gulp",
-    "gulp": "gulp"
+    "build": "sass src/scss/tos.scss css/tos.css --style=expanded --no-source-map",
+    "watch": "sass src/scss/tos.scss css/tos.css --style=expanded --source-map --watch"
   },
   "browserslist": [
     "last 3 versions"
   ],
-  "author": "John Doe",
+  "author": "Asacolips",
   "license": "MIT",
   "private": true,
-  "dependencies": {
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^2.6.5"
+  "devDependencies": {
+    "sass": "^1.53.0"
   }
 }
