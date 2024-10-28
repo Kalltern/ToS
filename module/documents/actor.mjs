@@ -45,16 +45,11 @@ export class ToSActor extends Actor {
     if (actorData.type !== "character") return;
 
     // Make modifications to data here. For example:
-    const systemData = actorData.system;
-
+    const systemData = actorData.system; //everything else
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(systemData.abilities)) {
-      // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
-    }
-    for (let [key, skill] of Object.entries(systemData.skills)) {
       // Calculate the ability rating using ToS rules.
-      skill.rating = Math.floor(15 + ability.value * 10);
+      ability.mod = Math.floor(15 + ability.value * 10);
     }
     // Debugging: Log the abilities
     console.log(systemData.abilities);
@@ -64,10 +59,24 @@ export class ToSActor extends Actor {
     // Set health correctly under stats
     systemData.stats.health.max += endurance * 5; // Set health based on endurance
 
-    systemData.skills = {
-      athletics: { value: 0, rating: 0, id: 0, type: 1 },
-      // ... other skills
-    };
+    //Loop through skill groups and add their ratings depending on their level and ability score
+    const skillset1 = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85];
+    const abilityScore = Object.values(systemData.abilities).map(
+      (ability) => ability.value
+    );
+
+    // Iterate through skills
+    for (let [key, skill] of Object.entries(systemData.skills)) {
+      // Ensure skill type is valid and matches your criteria
+      if (skill.type === 1) {
+        // Use skill.id to find the corresponding ability
+
+        skill.rating += skillset1[skill.value] + abilityScore[skill.id] * 3;
+      }
+    }
+
+    // Debugging: Log the skills
+    console.log("Updated Skills:", systemData.skills);
   }
 
   /**
@@ -108,11 +117,6 @@ export class ToSActor extends Actor {
         data[k] = foundry.utils.deepClone(v);
       }
     }
-    /*
-    // Add level for easier access, or fall back to 0.
-    if (data.attributes.level) {
-      data.lvl = data.attributes.level.value ?? 0;
-    }*/
   }
 
   /**

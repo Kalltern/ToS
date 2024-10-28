@@ -33,14 +33,14 @@
         <div class="resource-content flexrow flex-center flex-between">
           <input
             type="text"
-            name="system.Character.stats.health.value"
+            name="system.character.stats.health.value"
             value="{{system.stats.health.value}}"
             data-dtype="Number"
           />
           <span> / </span>
           <input
             type="text"
-            name="system.Character.stats.max"
+            name="system.character.stats.health.max"
             value="{{system.stats.health.max}}"
             data-dtype="Number"
           />
@@ -54,62 +54,20 @@
         <div class="resource-content flexrow flex-center flex-between">
           <input
             type="text"
-            name="system.Character.stats.mana.value"
+            name="system.character.stats.mana.value"
             value="{{system.stats.mana.value}}"
             data-dtype="Number"
           />
           <span> / </span>
           <input
             type="text"
-            name="system.Character.stats.mana.max"
+            name="system.character.stats.mana.max"
             value="{{system.stats.mana.max}}"
             data-dtype="Number"
           />
-
         </div>
       </div>
-      <!--
-      <div class="resource flex-group-center">
-        {{#if (eq actor.type "character")}}
-          <label class="resource-label">
-            {{localize
-              "TOS.Actor.Character.FIELDS.attributes.level.value.label"
-            }}
-          </label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input
-              type="text"
-              name="system.attributes.level.value"
-              value="{{system.attributes.level.value}}"
-              data-dtype="Number"
-            />
-          </div>
-        {{/if}}
-        {{#if (eq actor.type "npc")}}
-          <label class="resource-label">
-            {{localize "TOS.Actor.NPC.FIELDS.cr.label"}}
-            /
-            {{localize "TOS.Actor.NPC.xp.label"}}
-          </label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input
-              type="text"
-              name="system.cr"
-              value="{{system.cr}}"
-              data-dtype="Number"
-            />
-            <span></span>
-            <input
-              type="text"
-              disabled="true"
-              name="system.xp"
-              value="{{system.xp}}"
-              data-dtype="Number"
-            />
-          </div>
-        {{/if}}
-      </div>
-      -->
+
     </div>
   </div>
 </header>
