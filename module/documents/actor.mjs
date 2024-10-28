@@ -61,8 +61,14 @@ export class ToSActor extends Actor {
 
     //Loop through skill groups and add their ratings depending on their level and ability score
     const skillset1 = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85];
-    const abilityScore = Object.values(systemData.abilities).map(
-      (ability) => ability.value
+    const skillset2 = [0, 5, 10, 15, 20, 30]; // muscles, nimbleness
+    const skillset3 = [0, 25, 40, 55, 70, 85]; //riding and sailing
+    const skillset4 = [0, 40, 65, 90]; //dancing, meditation
+    const skillset5 = [0, 10, 20, 30, 40, 50]; //drinking
+    const skillset6 = [0, 5, 10, 15, 20, 25]; //social
+    const skillset7 = [0, 20, 30, 40, 50, 60]; //survival
+    const abilityScore = Object.keys(systemData.abilities).map(
+      (key) => systemData.abilities[key].value
     );
 
     // Iterate through skills
@@ -70,8 +76,19 @@ export class ToSActor extends Actor {
       // Ensure skill type is valid and matches your criteria
       if (skill.type === 1) {
         // Use skill.id to find the corresponding ability
-
         skill.rating += skillset1[skill.value] + abilityScore[skill.id] * 3;
+      } else if (skill.type === 2) {
+        skill.rating += skillset2[skill.value] + abilityScore[skill.id] * 3;
+      } else if (skill.type === 3) {
+        skill.rating += skillset3[skill.value] + abilityScore[skill.id] * 3;
+      } else if (skill.type === 4) {
+        skill.rating += skillset4[skill.value] + abilityScore[skill.id] * 3;
+      } else if (skill.type === 5) {
+        skill.rating += skillset5[skill.value] + abilityScore[skill.id] * 3;
+      } else if (skill.type === 6) {
+        skill.rating += skillset6[skill.value] + abilityScore[skill.id] * 6;
+      } else if (skill.type === 7) {
+        skill.rating += skillset7[skill.value] + abilityScore[skill.id] * 3;
       }
     }
 

@@ -50,6 +50,24 @@
           "rating": 0,
           "id": 0,
           "type": 1
+        },
+        "muscles": {
+          "value": 0,
+          "rating": 0,
+          "id": 0,
+          "type": 2
+        },
+        "stealth": {
+          "value": 0,
+          "rating": 0,
+          "id": 1,
+          "type": 1
+        },
+        "acrobacy": {
+          "value": 0,
+          "rating": 0,
+          "id": 1,
+          "type": 1
         }
       },
       "doctrines": {
