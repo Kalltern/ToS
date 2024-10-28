@@ -45,8 +45,7 @@ export class ToSActor extends Actor {
     if (actorData.type !== "character") return;
 
     // Make modifications to data here. For example:
-    const systemData = actorData.system;
-
+    const systemData = actorData.system; //everything else
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(systemData.abilities)) {
       // Calculate the ability rating using ToS rules.
@@ -59,6 +58,25 @@ export class ToSActor extends Actor {
     console.log("Endurance value:", endurance); // Log endurance value
     // Set health correctly under stats
     systemData.stats.health.max += endurance * 5; // Set health based on endurance
+
+    //Loop through skill groups and add their ratings depending on their level and ability score
+    const skillset1 = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85];
+    const abilityScore = Object.values(systemData.abilities).map(
+      (ability) => ability.value
+    );
+
+    // Iterate through skills
+    for (let [key, skill] of Object.entries(systemData.skills)) {
+      // Ensure skill type is valid and matches your criteria
+      if (skill.type === 1) {
+        // Use skill.id to find the corresponding ability
+
+        skill.rating += skillset1[skill.value] + abilityScore[skill.id] * 3;
+      }
+    }
+
+    // Debugging: Log the skills
+    console.log("Updated Skills:", systemData.skills);
   }
 
   /**
