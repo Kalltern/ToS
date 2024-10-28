@@ -52,32 +52,32 @@
       </div>
     </div>
   </section>
+  {{#each system.skills as |skill key|}}
+    <div class="ability flexrow flex-group-center">
+      <label
+        class="resource-label rollable flexlarge align-left"
+        data-action="roll"
+        data-roll="{{skill.rating}}-1d100"
+        data-label="system.skills.{{key}}"
+      >{{key}} <!-- Use key to display the skill name --> </label>
+      <input
+        type="text"
+        name="system.skills.{{key}}.value"
+        value="{{skill.value}}"
+        class="skill-value"
+        data-dtype="Number"
+      />
+      <span
+        type="text"
+        class="skill-mod rollable"
+        data-action="roll"
+        data-roll="{{skill.rating}}-1d100"
+        data-label="system.skills.{{key}}.rating"
+        data-dtype="Number"
+      >{{skill.rating}} <!-- Display the skill rating --> </span>
+    </div>
+    <!-- Log the entire system object -->
+    <!-- Log the skills object -->
+  {{/each}}
 
-  <section class="grid grid-3col">
-    {{#each system.skills as |skill key|}}
-      <div class="skill-item flexrow flex-group-center">
-        <label
-          class="resource-label rollable"
-          data-action="roll"
-          data-roll="{{skill.rating}}-1d100"
-          data-label="system.skills.{{key}}"
-        >{{key}}</label>
-        <input
-          type="text"
-          name="system.skills.{{key}}.value"
-          value="{{skill.value}}"
-          class="skill-value"
-          data-dtype="Number"
-        />
-        <label></label>
-        <span
-          class="skill-mod rollable"
-          data-action="roll"
-          data-roll="{{skill.rating}}-1d100"
-          data-label="system.skills.{{key}}.rating"
-          data-dtype="Number"
-        > {{skill.rating}}</span>
-      </div>
-    {{/each}}
-  </section>
 </section>

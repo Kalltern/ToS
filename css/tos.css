@@ -24,8 +24,7 @@
   font-family: "Roboto", sans-serif;
 }
 
-.rollable:hover,
-.rollable:focus {
+.rollable:hover, .rollable:focus {
   color: var(--tos-c-black);
   text-shadow: 0 0 10px red;
   cursor: pointer;
@@ -34,7 +33,7 @@
 .grid,
 .grid-2col {
   display: grid;
-  grid-column: span 2 / span 2;
+  grid-column: span 2/span 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin: 10px 0;
@@ -42,52 +41,52 @@
 }
 
 .grid-3col {
-  grid-column: span 3 / span 3;
+  grid-column: span 3/span 3;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .grid-4col {
-  grid-column: span 4 / span 4;
+  grid-column: span 4/span 4;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .grid-5col {
-  grid-column: span 5 / span 5;
+  grid-column: span 5/span 5;
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .grid-6col {
-  grid-column: span 6 / span 6;
+  grid-column: span 6/span 6;
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .grid-7col {
-  grid-column: span 7 / span 7;
+  grid-column: span 7/span 7;
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 .grid-8col {
-  grid-column: span 8 / span 8;
+  grid-column: span 8/span 8;
   grid-template-columns: repeat(8, minmax(0, 1fr));
 }
 
 .grid-9col {
-  grid-column: span 9 / span 9;
+  grid-column: span 9/span 9;
   grid-template-columns: repeat(9, minmax(0, 1fr));
 }
 
 .grid-10col {
-  grid-column: span 10 / span 10;
+  grid-column: span 10/span 10;
   grid-template-columns: repeat(10, minmax(0, 1fr));
 }
 
 .grid-11col {
-  grid-column: span 11 / span 11;
+  grid-column: span 11/span 11;
   grid-template-columns: repeat(11, minmax(0, 1fr));
 }
 
 .grid-12col {
-  grid-column: span 12 / span 12;
+  grid-column: span 12/span 12;
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
@@ -229,23 +228,21 @@
   font-family: "Roboto", sans-serif;
 }
 .tos .sheet-header {
-  display: flex; /* Use flexbox for the header */
-  flex-direction: row; /* Align items in a row */
-  flex-wrap: wrap; /* Allow wrapping */
-  justify-content: flex-start; /* Start alignment */
-  margin-bottom: 10px; /* Space below the header */
-}
-
-.tos .sheet-header .profile-img {
-  flex: 0 0 100px; /* Fixed size for profile image */
-  height: 100px; /* Maintain height */
-  margin-right: 10px; /* Space to the right */
-}
-
-.tos .sheet-header .header-fields {
-  flex: 1; /* Allow the fields to take remaining space */
+  flex: 0 auto;
+  overflow: hidden;
   display: flex;
-  flex-direction: column; /* Stack fields vertically */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+.tos .sheet-header .profile-img {
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+.tos .sheet-header .header-fields {
+  flex: 1;
 }
 .tos .sheet-tabs {
   flex: 0;
@@ -270,55 +267,12 @@
 .tos .resource-label {
   font-weight: bold;
 }
-.tos .resources {
-  display: flex; /* Use flex for resources */
-  flex-wrap: wrap; /* Allow wrapping */
-  justify-content: flex-start; /* Align items to start */
-}
-.tos .abilities {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 600px; /* Set a max width */
-  margin: 0 auto; /* Center the abilities if desired */
-}
-
 .tos .ability {
-  flex: 0 0 50px; /* Fixed width for each ability */
-  margin: 5px; /* Space between abilities */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 2px;
 }
-
-.tos .ability label {
-  margin-bottom: 4px; /* Space between label and input */
-}
-
 .tos .ability-score,
 .tos .ability-mod {
-  width: 40px; /* Fixed width */
-  padding: 2px; /* Adjust padding */
-  text-align: center;
-  font-size: 14px; /* Smaller font size */
-}
-.skill-item {
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Center items vertically */
-  margin-bottom: 10px; /* Space between each skill item */
-}
-
-.skill-item label {
-  margin-right: 5px; /* Space between label and value */
-}
-
-.skill-value {
-  width: 50px; /* Set a fixed width for the value input */
-  margin-right: 5px; /* Space between value and rating */
-}
-
-.skill-mod {
-  margin-left: 5px; /* Space between closing bracket and rating */
+  flex: 0 0 44px;
 }
 .tos .items-header {
   height: 28px;
@@ -361,8 +315,7 @@
   align-items: center;
   display: flex;
 }
-.tos .items-list .item-name h3,
-.tos .items-list .item-name h4 {
+.tos .items-list .item-name h3, .tos .items-list .item-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
@@ -463,8 +416,7 @@
   align-items: center;
   display: flex;
 }
-.tos .effects-list .effect-name h3,
-.tos .effects-list .effect-name h4 {
+.tos .effects-list .effect-name h3, .tos .effects-list .effect-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
