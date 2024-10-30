@@ -54,8 +54,8 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     biography: {
       template: "systems/tos/templates/actor/biography.hbs",
     },
-    gear: {
-      template: "systems/tos/templates/actor/gear.hbs",
+    inventory: {
+      template: "systems/tos/templates/actor/inventory.hbs",
     },
     spells: {
       template: "systems/tos/templates/actor/spells.hbs",
@@ -75,10 +75,10 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case "character":
-        options.parts.push("features", "gear", "spells", "effects");
+        options.parts.push("features", "inventory", "spells", "effects");
         break;
       case "npc":
-        options.parts.push("gear", "effects");
+        options.parts.push("inventory", "effects");
         break;
     }
   }
@@ -115,7 +115,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
       case "features":
       case "testtab":
       case "spells":
-      case "gear":
+      case "inventory":
         context.tab = context.tabs[partId];
         break;
       case "biography":
@@ -185,9 +185,9 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
           tab.id = "features";
           tab.label += "Features";
           break;
-        case "gear":
-          tab.id = "gear";
-          tab.label += "Gear";
+        case "inventory":
+          tab.id = "inventory";
+          tab.label += "Inventory";
           break;
         case "spells":
           tab.id = "spells";
@@ -214,7 +214,6 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     // You can just use `this.document.itemTypes` instead
     // if you don't need to subdivide a given type like
     // this sheet does with spells
-    const gear = [];
     const features = [];
     const weapon = [];
     const spells = {
@@ -232,11 +231,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
 
     // Iterate through items, allocating to containers
     for (let i of this.document.items) {
-      // Append to gear.
-      if (i.type === "gear") {
-        gear.push(i);
-      }
-      // Append to gear.
+      // Append to weapon.
       if (i.type === "weapon") {
         weapon.push(i);
       }
@@ -257,7 +252,6 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     }
 
     // Sort then assign
-    context.gear = gear.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     context.weapon = weapon.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     context.spells = spells;

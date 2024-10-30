@@ -18,7 +18,7 @@
         "Biography": "Biography",
         "TestTab": "TestTab",
         "Features": "Features",
-        "Gear": "Gear",
+        "Inventory": "Inventory",
         "Spells": "Spells",
         "Effects": "Effects"
       },
@@ -52,13 +52,12 @@
         "Description": "Description",
         "Effects": "Effects"
       },
-      "Gear": {
+      "Weapon": {
         "FIELDS": {
           "rollFormula": { "label": "Roll Formula" },
           "numDice": { "label": "Number of Dice" },
           "dieSize": { "label": "Die Size" },
           "rollMod": { "label": "Roll Modifier" },
-          "quantity": { "label": "Quantity" },
           "weight": { "label": "Weight" }
         }
       },
@@ -84,7 +83,7 @@
       "npc": "NPC"
     },
     "Item": {
-      "gear": "Gear",
+      "weapon": "Weapon",
       "feature": "Feature",
       "spell": "Spell"
     }
