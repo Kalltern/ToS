@@ -69,7 +69,7 @@
     }
   },
   "Item": {
-    "types": ["gear", "feature", "spell", "race"],
+    "types": ["gear", "feature", "spell", "race", "weapon"],
     "htmlFields": ["description"],
     "templates": {
       "base": {
@@ -81,6 +81,12 @@
       "quantity": 1,
       "weight": 0,
       "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+    },
+    "weapon": {
+      "templates": ["base"],
+      "type": ["light", "medium", "heavy"],
+      "weight": 0,
+      "formula": "d6"
     },
     "feature": {
       "templates": ["base"]
