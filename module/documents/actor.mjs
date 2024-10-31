@@ -55,12 +55,12 @@ export class ToSActor extends Actor {
     console.log(systemData.abilities);
     // Calculate endurance
     const endurance = systemData.abilities.end.value; // Ensure endurance exists
-    console.log("Endurance value:", endurance); // Log endurance value
     // Set health correctly under stats
     systemData.stats.health.max += endurance * 5; // Set health based on endurance
 
     //Loop through skill groups and add their ratings depending on their level and ability score
     const skillset1 = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85];
+    const combatset1 = [0, 20, 25, 30, 35, 45, 50, 60, 65, 75, 80];
     const abilityScore = Object.values(systemData.abilities).map(
       (ability) => ability.value
     );
@@ -74,9 +74,18 @@ export class ToSActor extends Actor {
         skill.rating += skillset1[skill.value] + abilityScore[skill.id] * 3;
       }
     }
+    // Iterate through combat skills
+    for (let [key, cskill] of Object.entries(systemData.cskills)) {
+      // Ensure skill type is valid and matches your criteria
+      if (cskill.type === 1) {
+        // Use skill.id to find the corresponding ability
 
-    // Debugging: Log the skills
+        cskill.rating += combatset1[cskill.value] + abilityScore[cskill.id] * 3;
+      }
+    }
+    // Debugging: Log all skills
     console.log("Updated Skills:", systemData.skills);
+    console.log("Updated Combat Skills:", systemData.cskills);
   }
 
   /**

@@ -79,63 +79,97 @@
     <!-- Log the entire system object -->
     <!-- Log the skills object -->
   {{/each}}
-      <section class="main grid-span-2">
-      <ol class="items-list">
-        <li class="item flexrow items-header">
-          <div class="item-name">{{localize "Name"}}</div>
+  {{#each system.cskills as |cskill key|}}
+    <div class="ability flexrow flex-group-center">
+      <label
+        class="resource-label rollable flexlarge align-left"
+        data-action="roll"
+        data-roll="{{cskill.rating}}-1d100"
+        data-label="system.cskills.{{key}}"
+      >{{key}} <!-- Use key to display the combat skill name --> </label>
+      <input
+        type="text"
+        name="system.cskills.{{key}}.value"
+        value="{{cskill.value}}"
+        class="cskill-value"
+        data-dtype="Number"
+      />
+      <span
+        type="text"
+        class="cskill-mod rollable"
+        data-action="roll"
+        data-roll="{{cskill.rating}}-1d100"
+        data-label="system.cskills.{{key}}.rating"
+        data-dtype="Number"
+      >{{cskill.rating}} <!-- Display the combat skill rating --> </span>
+    </div>
+    <!-- Log the entire system object -->
+    <!-- Log the skills object -->
+  {{/each}}
+
+  <!-- Weapon tab -->
+  <section class="main grid-span-2">
+    <ol class="items-list">
+      <li class="item flexrow items-header">
+        <div class="item-name">{{localize "Name"}}</div>
+        <div class="item-controls">
+          {{#if @root.editable}}
+            <a
+              class="item-control item-create"
+              title="Create item"
+              data-action="createDoc"
+              data-document-class="Item"
+              data-type="feature"
+            >
+              <i class="fas fa-plus"></i>
+              {{localize "DOCUMENT.New" type="feature"}}
+            </a>
+          {{/if}}
+        </div>
+
+      </li>
+
+      {{#each weapon as |item id|}}
+        <li
+          class="item flexrow"
+          data-item-id="{{item._id}}"
+          data-drag="true"
+          data-document-class="Item"
+        >
+          <div class="item-name">
+            <div class="item-image">
+              <a class="rollable" data-roll-type="item" data-action="roll">
+                <img
+                  src="{{item.img}}"
+                  title="{{item.name}}"
+                  width="24"
+                  height="24"
+                />
+              </a>
+            </div>
+            <div>{{item.name}}</div>
+          </div>
           <div class="item-controls">
+            <a
+              class="item-control item-edit"
+              title="{{localize 'DOCUMENT.Update' type="weapon"}}"
+              data-action="viewDoc"
+            >
+              <i class="fas fa-edit"></i>
+            </a>
             {{#if @root.editable}}
               <a
-                class="item-control item-create"
-                title="Create item"
-                data-action="createDoc"
-                data-document-class="Item"
-                data-type="feature"
+                class="item-control item-delete"
+                title="{{localize 'DOCUMENT.Delete' type="weapon"}}"
+                data-action="deleteDoc"
               >
-                <i class="fas fa-plus"></i>
-                {{localize "DOCUMENT.New" type="feature"}}
+                <i class="fas fa-trash"></i>
               </a>
             {{/if}}
           </div>
         </li>
-  {{#each weapon as |item id|}}
-    <li
-      class="item flexrow"
-      data-item-id="{{item._id}}"
-      data-drag="true"
-      data-document-class="Item"
-    >
-      <div class="item-name">
-        <div class="item-image">
-          <a class="rollable" data-roll-type="item" data-action="roll">
-            <img
-              src="{{item.img}}"
-              title="{{item.name}}"
-              width="24"
-              height="24"
-            />
-          </a>
-        </div>
-        <div>{{item.name}}</div>
-      </div>
-      <div class="item-controls">
-        <a
-          class="item-control item-edit"
-          title="{{localize 'DOCUMENT.Update' type="weapon"}}"
-          data-action="viewDoc"
-        >
-          <i class="fas fa-edit"></i>
-        </a>
-        {{#if @root.editable}}
-          <a
-            class="item-control item-delete"
-            title="{{localize 'DOCUMENT.Delete' type="weapon"}}"
-            data-action="deleteDoc"
-          >
-            <i class="fas fa-trash"></i>
-          </a>
-        {{/if}}
-      </div>
-    </li>
-  {{/each}}
+      {{/each}}
+    </ol>
+  </section>
+
 </section>

@@ -52,6 +52,14 @@
           "type": 1
         }
       },
+      "cskills": {
+        "combat": {
+          "value": 0,
+          "rating": 0,
+          "id": 0,
+          "type": 1
+        }
+      },
       "doctrines": {
         "swordsman": {
           "value": 0
