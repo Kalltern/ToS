@@ -82,7 +82,7 @@
       "class": ["axe", "blunt", "sword", "polearm", "bow", "crossbow"],
       "type": ["light", "medium", "heavy"],
       "weight": 0,
-      "formula": "d6 + (@dex.mod > @str.mod ? @dex.mod : @str.mod)"
+      "formula": "@damageDice"
     },
     "feature": {
       "templates": ["base"]

@@ -22,7 +22,10 @@ export class ToSItem extends Item {
 
     // Quit early if there's no parent actor
     if (!this.actor) return rollData;
-
+    // Only add `damageDice` if the item type is "weapon"
+    if (this.type === "weapon") {
+      rollData.damageDice = this.system.damageDice || "d6"; // Default to "d6" if undefined
+    }
     // If present, add the actor's roll data
     rollData.actor = this.actor.getRollData();
 
@@ -39,7 +42,7 @@ export class ToSItem extends Item {
 
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
-    const rollMode = game.settings.get('core', 'rollMode');
+    const rollMode = game.settings.get("core", "rollMode");
     const label = `[${item.type}] ${item.name}`;
 
     // If there's no roll data, send a chat message.
@@ -48,7 +51,7 @@ export class ToSItem extends Item {
         speaker: speaker,
         rollMode: rollMode,
         flavor: label,
-        content: item.system.description ?? '',
+        content: item.system.description ?? "",
       });
     }
     // Otherwise, create a roll and send a chat message from it.
