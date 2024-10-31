@@ -59,6 +59,13 @@ export class ToSItem extends Item {
       // Retrieve roll data.
       const rollData = this.getRollData();
 
+      // Check if the item is a weapon
+      if (this.type === "weapon") {
+        // Construct the formula to include damageDice and the strength value
+        const damageDice = rollData.damageDice || "d6"; // Default to "d6" if undefined
+        const strengthValue = rollData.actor?.abilities?.str.value || 0; // Get strength value from actor
+        rollData.formula = `${damageDice} + ${strengthValue}`; // Combine into the new formula
+      }
       // Invoke the roll and submit it to chat.
       const roll = new Roll(rollData.formula, rollData);
       // If you need to store the value first, uncomment the next line.
