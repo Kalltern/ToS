@@ -13,13 +13,15 @@
 
     <div class="grid grid-4col">
       <div class="item-details">
-        <label for="damage-dice">Damage Dice:</label>
+        <label for="damage-dice">{{localize
+            "TOS.Item.Weapon.FIELDS.damageDice.label"
+          }}:</label>
         <input
           type="text"
           id="damage-dice"
           name="system.damageDice"
           value="{{item.system.damageDice}}"
-          placeholder="e.g., 2d6"
+          placeholder="e.g. 2d6"
           data-dtype="String"
         />
       </div>
