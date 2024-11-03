@@ -398,19 +398,64 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
         if (item) return item.roll();
     }
 
-    // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : "";
-      let roll = new Roll(dataset.roll, this.actor.getRollData());
+      // Determine if this is a skill or combat skill roll
+      const isSkillRoll =
+        dataset.rollType === "skill" || dataset.rollType === "cskill";
+      const skillKey = dataset.label; // This should hold either "skill name" or "cskill name"
+
+      let label = dataset.label
+        ? `[${dataset.rollType === "skill" ? "Skill" : "Combat Skill"}] ${
+            dataset.label
+          }`
+        : "";
+      const roll = new Roll(dataset.roll, this.actor.getRollData());
+      await roll.evaluate();
+
+      const d100Result = roll.dice[0]?.total; // Extract the d100 result
+
+      // Only evaluate critical status if it's a skill or combat skill roll
+      if (isSkillRoll) {
+        // Retrieve the skill data based on the roll type
+        const skillData =
+          dataset.rollType === "skill"
+            ? this.actor.system.skills[skillKey]
+            : this.actor.system.cskills[skillKey];
+
+        if (skillData) {
+          const criticalMessage = this.evaluateCriticalSuccess(
+            d100Result,
+            skillData.criticalSuccessThreshold, // Use the skill-specific threshold
+            skillData.criticalFailureThreshold // Use the skill-specific threshold
+          );
+
+          // Modify the label to include critical success/failure indication
+          if (criticalMessage) {
+            label += ` - ${criticalMessage}`;
+          }
+          console.log(`Critical Message: ${criticalMessage}`);
+        } else {
+          console.error("No skill data found for:", skillKey);
+        }
+      }
+
+      // Send the roll result to the chat
       await roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label,
         rollMode: game.settings.get("core", "rollMode"),
       });
+
       return roll;
     }
   }
-
+  evaluateCriticalSuccess(d100Result, successThreshold, failureThreshold) {
+    if (d100Result <= successThreshold) {
+      return "Critical Success"; // Return this message for a critical success
+    } else if (d100Result >= failureThreshold) {
+      return "Critical Failure"; // Return this message for a critical failure
+    }
+    return ""; // Return an empty string for normal outcomes
+  }
   /** Helper Functions */
 
   /**

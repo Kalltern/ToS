@@ -145,3 +145,35 @@ function rollItemMacro(itemUuid) {
     item.roll();
   });
 }
+Hooks.on("renderChatMessage", (message, html, data) => {
+  // Check if the current user is the one who made the roll
+  if (game.user.id === message.author.id) {
+    // Add logic to check if the message is a roll message
+    if (message.content.includes("rolled") || message.rolls.length > 0) {
+      // Create a reroll button element
+      const rerollButton = $(
+        '<button class="d100-reroll-button">Re-Roll</button>'
+      );
+
+      // Append the reroll button to the chat message
+      html.find(".message-content").append(rerollButton);
+
+      // Add click event listener for the reroll button
+      rerollButton.on("click", async (event) => {
+        event.preventDefault();
+        console.log("Re-roll button clicked");
+
+        // Call your reroll logic here
+        const rollFormula = message.rolls[0].formula;
+        const roll = new Roll(rollFormula);
+        await roll.evaluate();
+
+        // Send the new roll to chat or update the message as needed
+        roll.toMessage({
+          speaker: ChatMessage.getSpeaker({ user: game.user }),
+          flavor: `[Re-Roll] ${message.flavor}`,
+        });
+      });
+    }
+  }
+});

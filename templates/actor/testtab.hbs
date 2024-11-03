@@ -17,15 +17,58 @@
       <div class="resource-content flexrow flex-center flex-between">
         <input
           type="text"
-          name="system.Character.stats.health.value"
+          name="system.stats.health.value"
           value="{{system.stats.health.value}}"
           data-dtype="Number"
         />
         <span> / </span>
         <input
           type="text"
-          name="system.Character.stats.max"
+          name="system.stats.health.max"
           value="{{system.stats.health.max}}"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+
+    <div class="resource flex-group-center">
+      <label for="system.stats.luck.value" class="resource-label">
+        Luck
+      </label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input
+          type="text"
+          name="system.stats.luck.value"
+          value="{{system.stats.luck.value}}"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label for="system.skills.athletics.critbonus" class="resource-label">
+        athleticsbonus
+      </label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input
+          type="text"
+          name="system.skills.athletics.critbonus"
+          value="{{system.skills.athletics.critbonus}}"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label
+        for="system.skills.athletics.critfailpenalty"
+        class="resource-label"
+      >
+        athleticspenalty
+      </label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input
+          type="text"
+          name="system.skills.athletics.critfailpenalty"
+          value="{{system.skills.athletics.critfailpenalty}}"
           data-dtype="Number"
         />
       </div>
@@ -38,7 +81,7 @@
       <div class="resource-content flexrow flex-center flex-between">
         <input
           type="text"
-          name="system.Character.stats.mana.value"
+          name="system.stats.mana.value"
           value="{{system.stats.mana.value}}"
           data-dtype="Number"
         />
@@ -58,7 +101,8 @@
         class="resource-label rollable flexlarge align-left"
         data-action="roll"
         data-roll="{{skill.rating}}-1d100"
-        data-label="system.skills.{{key}}"
+        data-roll-type="skill"
+        data-label="{{key}}"
       >{{key}} <!-- Use key to display the skill name --> </label>
       <input
         type="text"
@@ -72,7 +116,8 @@
         class="skill-mod rollable"
         data-action="roll"
         data-roll="{{skill.rating}}-1d100"
-        data-label="system.skills.{{key}}.rating"
+        data-label="  {{key}}.rating"
+        data-roll-type="skill"
         data-dtype="Number"
       >{{skill.rating}} <!-- Display the skill rating --> </span>
     </div>
@@ -85,7 +130,8 @@
         class="resource-label rollable flexlarge align-left"
         data-action="roll"
         data-roll="{{cskill.rating}}-1d100"
-        data-label="system.cskills.{{key}}"
+        data-roll-type="cskill"
+        data-label="{{key}}"
       >{{key}} <!-- Use key to display the combat skill name --> </label>
       <input
         type="text"
@@ -99,7 +145,8 @@
         class="cskill-mod rollable"
         data-action="roll"
         data-roll="{{cskill.rating}}-1d100"
-        data-label="system.cskills.{{key}}.rating"
+        data-roll-type="cskill"
+        data-label="{{key}}"
         data-dtype="Number"
       >{{cskill.rating}} <!-- Display the combat skill rating --> </span>
     </div>

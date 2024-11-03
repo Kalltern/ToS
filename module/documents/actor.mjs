@@ -56,7 +56,7 @@ export class ToSActor extends Actor {
     // Calculate endurance
     const endurance = systemData.abilities.end.value; // Ensure endurance exists
     // Set health correctly under stats
-    systemData.stats.health.max += endurance * 5; // Set health based on endurance
+    systemData.stats.health.max = endurance * 5; // Set health based on endurance
 
     //Loop through skill groups and add their ratings depending on their level and ability score
     const skillset1 = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85];
@@ -71,7 +71,7 @@ export class ToSActor extends Actor {
       if (skill.type === 1) {
         // Use skill.id to find the corresponding ability
 
-        skill.rating += skillset1[skill.value] + abilityScore[skill.id] * 3;
+        skill.rating = skillset1[skill.value] + abilityScore[skill.id] * 3;
       }
     }
     // Iterate through combat skills
@@ -80,10 +80,61 @@ export class ToSActor extends Actor {
       if (cskill.type === 1) {
         // Use skill.id to find the corresponding ability
 
-        cskill.rating += combatset1[cskill.value] + abilityScore[cskill.id] * 3;
+        cskill.rating = combatset1[cskill.value] + abilityScore[cskill.id] * 3;
       }
     }
-    // Debugging: Log all skills
+
+    // Define critical thresholds influenced by luck
+    const luck = systemData.stats.luck.value;
+    const baseCriticalSuccess = 5; // Base critical success threshold
+    const baseCriticalFailure = 96; // Base critical failure threshold
+
+    // Function to calculate thresholds for each skill type (e.g., skills, cskills)
+    function calculateSkillThresholds(skillsObject) {
+      for (const [key, skillData] of Object.entries(skillsObject)) {
+        // Ensure skillData is defined and contains critical bonus properties
+        const critBonus = skillData.critbonus || 0;
+        const critFailPenalty = skillData.critfailpenalty || 0;
+
+        // Calculate critical success threshold for each skill
+        skillData.criticalSuccessThreshold = Math.max(
+          1,
+          baseCriticalSuccess + Math.max(0, luck) + critBonus
+        );
+
+        // Calculate critical failure threshold for each skill
+        skillData.criticalFailureThreshold = Math.min(
+          100,
+          baseCriticalFailure - Math.max(0, -luck) - critFailPenalty
+        );
+
+        // Debug output to verify each skill's calculated thresholds
+        console.log(
+          `Skill ${key}: Critical Success Threshold ${skillData.criticalSuccessThreshold}, Critical Failure Threshold ${skillData.criticalFailureThreshold}`
+        );
+      }
+    }
+
+    // Calculate thresholds for regular skills and combat skills
+    calculateSkillThresholds(systemData.skills);
+    calculateSkillThresholds(systemData.cskills);
+
+    // Global thresholds based on luck.value
+    this.criticalSuccessThreshold = Math.max(
+      1,
+      baseCriticalSuccess + Math.max(0, luck)
+    );
+
+    this.criticalFailureThreshold = Math.min(
+      100,
+      baseCriticalFailure - Math.max(0, -luck)
+    );
+
+    // Store thresholds in actor data if needed
+    actorData.criticalSuccessThreshold = this.criticalSuccessThreshold;
+    actorData.criticalFailureThreshold = this.criticalFailureThreshold;
+
+    // Debugging: Log all skills and combat skills
     console.log("Updated Skills:", systemData.skills);
     console.log("Updated Combat Skills:", systemData.cskills);
   }

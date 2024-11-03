@@ -19,6 +19,9 @@
           "value": 5,
           "min": 0,
           "max": 5
+        },
+        "luck": {
+          "value": 0
         }
       },
       "abilities": {
@@ -44,10 +47,13 @@
           "value": 1
         }
       },
+
       "skills": {
         "athletics": {
           "value": 0,
           "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
           "id": 0,
           "type": 1
         }
@@ -56,6 +62,8 @@
         "combat": {
           "value": 0,
           "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
           "id": 0,
           "type": 1
         }
