@@ -1,14 +1,5 @@
 {
   "TOS": {
-    "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
-      "End": { "long": "Endurance", "abbr": "end" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wil": { "long": "Will", "abbr": "wil" },
-      "Cha": { "long": "Charisma", "abbr": "cha" },
-      "Per": { "long": "Perception", "abbr": "per" }
-    },
     "SheetLabels": {
       "Actor": "ToS Actor Sheet",
       "Item": "ToS Item Sheet"
@@ -17,6 +8,7 @@
       "Tabs": {
         "Biography": "Biography",
         "TestTab": "TestTab",
+        "Skills": "Skills",
         "Features": "Features",
         "Inventory": "Inventory",
         "Spells": "Spells",
@@ -37,6 +29,24 @@
             "value": { "label": "Mana" },
             "max": { "label": "Maximum Mana" }
           }
+        },
+        "Ability": {
+          "Str": { "long": "Strength", "abbr": "str" },
+          "End": { "long": "Endurance", "abbr": "end" },
+          "Dex": { "long": "Dexterity", "abbr": "dex" },
+          "Int": { "long": "Intelligence", "abbr": "int" },
+          "Wil": { "long": "Will", "abbr": "wil" },
+          "Cha": { "long": "Charisma", "abbr": "cha" },
+          "Per": { "long": "Perception", "abbr": "per" }
+        },
+        "SecondaryAbility": {
+          "Spd": { "long": "Speed", "abbr": "spd" },
+          "Lck": { "long": "Luck", "abbr": "lck" },
+          "Res": { "long": "Resolve", "abbr": "res" },
+          "Fth": { "long": "Faith", "abbr": "fth" },
+          "Sin": { "long": "Sinfulness", "abbr": "sin" },
+          "Vis": { "long": "Visage", "abbr": "vis" },
+          "Ini": { "long": "Initiative", "abbr": "ini" }
         }
       },
       "NPC": {

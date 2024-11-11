@@ -18,8 +18,8 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
   static DEFAULT_OPTIONS = {
     classes: ["tos", "actor"],
     position: {
-      width: 650,
-      height: 800,
+      width: 800,
+      height: 1000,
     },
     actions: {
       onEditImage: this._onEditImage,
@@ -48,6 +48,9 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     testtab: {
       template: "systems/tos/templates/actor/testtab.hbs",
     },
+    skills: {
+      template: "systems/tos/templates/actor/skills.hbs",
+    },
     features: {
       template: "systems/tos/templates/actor/features.hbs",
     },
@@ -69,7 +72,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     // Not all parts always render
-    options.parts = ["header", "tabs", "biography", "testtab"];
+    options.parts = ["header", "tabs", "biography", "testtab", "skills"];
     // Don't show the other tabs if only limited view
     if (this.document.limited) return;
     // Control which parts show based on document subtype
@@ -114,6 +117,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
     switch (partId) {
       case "features":
       case "testtab":
+      case "skills":
       case "spells":
       case "inventory":
         context.tab = context.tabs[partId];
@@ -180,6 +184,10 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
         case "testtab":
           tab.id = "testtab";
           tab.label += "TestTab";
+          break;
+        case "skills":
+          tab.id = "skills";
+          tab.label += "Skills";
           break;
         case "features":
           tab.id = "features";
@@ -448,6 +456,7 @@ export class ToSActorSheet extends api.HandlebarsApplicationMixin(
       return roll;
     }
   }
+
   evaluateCriticalSuccess(d100Result, successThreshold, failureThreshold) {
     if (d100Result <= successThreshold) {
       return "Critical Success"; // Return this message for a critical success

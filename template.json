@@ -15,13 +15,25 @@
           "min": 0,
           "max": 10
         },
-        "mana": {
+        "gw": {
+          "value": 2,
+          "min": 0,
+          "max": 2
+        },
+        "stamina": {
           "value": 5,
           "min": 0,
           "max": 5
         },
-        "luck": {
-          "value": 0
+        "toxicity": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "mana": {
+          "value": 5,
+          "min": 0,
+          "max": 5
         }
       },
       "abilities": {
@@ -47,15 +59,346 @@
           "value": 1
         }
       },
+      "secondaryAbilities": {
+        "spd": {
+          "value": 1
+        },
+        "lck": {
+          "value": 1
+        },
+        "res": {
+          "value": 0
+        },
+        "fth": {
+          "value": 1
+        },
+        "sin": {
+          "value": 1
+        },
+        "vis": {
+          "value": 1
+        },
+        "ini": {
+          "value": 1
+        }
+      },
 
       "skills": {
-        "athletics": {
+        "Athletics": {
           "value": 0,
           "rating": 0,
           "critbonus": 0,
           "critfailpenalty": 0,
           "id": 0,
           "type": 1
+        },
+        "Muscles": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 0,
+          "type": 2
+        },
+        "Smithing": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 0,
+          "type": 1
+        },
+        "Acrobacy": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 1,
+          "type": 1
+        },
+        "Craft": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 1,
+          "type": 1
+        },
+        "Dancing": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 1,
+          "type": 4
+        },
+        "Lockpicking": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 1,
+          "type": 1
+        },
+        "Nimbleness": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 1,
+          "type": 2
+        },
+        "Pickpocketing": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 1,
+          "type": 1
+        },
+        "Riding": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 1,
+          "type": 3
+        },
+
+        "Sailing": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 1,
+          "type": 3
+        },
+
+        "Stealth": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 1,
+          "type": 1
+        },
+
+        "Drinking": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 2,
+          "type": 5
+        },
+        "Alchemy": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 3,
+          "type": 1
+        },
+        "Arcana": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 3,
+          "type": 1
+        },
+        "Art": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 3,
+          "type": 1
+        },
+        "Engineering": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 3,
+          "type": 1
+        },
+        "Firstaid": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 3,
+          "type": 1
+        },
+        "Logic": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 3,
+          "type": 1
+        },
+        "Research": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 3,
+          "type": 1
+        },
+        "Tactics": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 3,
+          "type": 1
+        },
+        "Augury": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 4,
+          "type": 1
+        },
+        "Dreamwalker": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 4,
+          "type": 1
+        },
+        "Meditation": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 4,
+          "type": 4
+        },
+        "Rituals": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 4,
+          "type": 1
+        },
+        "Acting": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 5,
+          "type": 1
+        },
+        "Animalhandling": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 5,
+          "type": 1
+        },
+        "Deception": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 5,
+          "type": 6
+        },
+        "Intimidation": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 5,
+          "type": 6
+        },
+        "Leadership": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 5,
+          "type": 1
+        },
+        "Music": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 5,
+          "type": 1
+        },
+        "Painting": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 5,
+          "type": 1
+        },
+        "Perusasion": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 5,
+          "type": 6
+        },
+        "Seduction": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 5,
+          "type": 6
+        },
+
+        "Singing": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 5,
+          "type": 1
+        },
+        "Herbalism": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 6,
+          "type": 1
+        },
+        "Insight": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 6,
+          "type": 6
+        },
+        "Traps": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 6,
+          "type": 1
+        },
+        "Survival": {
+          "value": 0,
+          "rating": 0,
+          "critbonus": 0,
+          "critfailpenalty": 0,
+          "id": 6,
+          "type": 7
         }
       },
       "cskills": {

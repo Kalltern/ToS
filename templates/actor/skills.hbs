@@ -1,0 +1,38 @@
+{{! Skills Tab }}
+<section
+  class="tab skills {{tab.cssClass}}"
+  data-group="primary"
+  data-tab="skills"
+>
+  <ul class="skills-list">
+    {{#each system.skills as |skill key|}}
+      <li class="skill-item">
+        <div class="skill-info">
+          <label
+            class="skill-label rollable"
+            data-action="roll"
+            data-roll="{{skill.rating}}-1d100"
+            data-roll-type="skill"
+            data-label="{{key}}"
+          >{{key}}</label>
+
+          <input
+            type="text"
+            name="system.skills.{{key}}.value"
+            value="{{skill.value}}"
+            class="skill-value"
+            data-dtype="Number"
+          />
+
+          <span
+            class="skill-rating rollable"
+            data-action="roll"
+            data-roll="{{skill.rating}}-1d100"
+            data-roll-type="skill"
+            data-label="{{key}}.rating"
+          >{{skill.rating}}</span>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</section>

@@ -54,6 +54,30 @@
         </div>
       {{/each}}
     </div>
+    <div class="Abilities flexrow">
+      {{#each system.secondaryAbilities as |ability key|}}
+        <div class="ability flexcolumn flex-group-center">
+          <label
+            class="resource-label rollable"
+            data-action="roll"
+            data-roll="(@secondaryAbilities.{{key}}.mod)-1d100"
+            data-label="{{localize
+              (lookup @root.config.secondaryAbilities key)
+            }}"
+          >
+            {{localize (lookup @root.config.secondaryAbilities key)}}
+          </label>
+          <input
+            type="text"
+            name="system.secondaryAbilities.{{key}}.value"
+            value="{{ability.value}}"
+            class="ability-score"
+            data-dtype="Number"
+          />
+
+        </div>
+      {{/each}}
+    </div>
 
   </div>
 </header>

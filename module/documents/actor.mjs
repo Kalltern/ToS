@@ -85,7 +85,7 @@ export class ToSActor extends Actor {
     }
 
     // Define critical thresholds influenced by luck
-    const luck = systemData.stats.luck.value;
+    const luck = systemData.secondaryAbilities.lck.value;
     const baseCriticalSuccess = 5; // Base critical success threshold
     const baseCriticalFailure = 96; // Base critical failure threshold
 
