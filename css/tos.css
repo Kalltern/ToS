@@ -507,55 +507,21 @@
   border: none;
 }
 
-.skills-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns per section */
-  gap: 8px; /* Space between the skills */
+.skills-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
-.skill-item {
+.skills-column {
+  flex: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-entry {
+  display: flex;
   justify-content: space-between;
-  padding: 4px 8px;
-  border-bottom: 1px solid #ddd;
-}
-
-.skill-info {
-  display: flex;
   align-items: center;
-  gap: 6px;
-}
-
-.skill-label {
-  font-size: 0.8em; /* Smaller font size for the skill name */
-  font-weight: bold;
-  min-width: 60px; /* Ensures the label (skill name) is still readable */
-  text-align: left;
-  cursor: pointer; /* Indicates that it's clickable */
-}
-
-.skill-value {
-  width: 30px; /* Set a width that's 2x larger than 20px */
-  max-width: 30px; /* Prevent it from growing too wide */
-  max-height: 15px; /* Prevent it from growing too wide */
-  padding: 0 4px; /* Slightly larger padding for better readability */
-  font-size: 0.6em; /* Keep the smaller font size */
-  text-align: center;
-  box-sizing: border-box; /* Ensure padding is included in the width */
-  font-family: Arial, sans-serif; /* Use a compact font */
-}
-
-.skill-rating {
-  font-size: 0.8em; /* Smaller font size for the skill rating */
-  font-weight: bold;
-  cursor: pointer; /* Indicates that it's clickable */
-}
-
-.skill-rating:hover,
-.skill-label:hover {
-  text-decoration: underline; /* Adds a hover effect to indicate it's clickable */
 }

@@ -70,6 +70,24 @@ Hooks.once("init", function () {
 Handlebars.registerHelper("toLowerCase", function (str) {
   return str.toLowerCase();
 });
+Handlebars.registerHelper("eq", function (a, b) {
+  return a === b;
+});
+Handlebars.registerHelper(
+  "filterSkillsByAbility",
+  function (skills, abilityId) {
+    return Object.entries(skills).filter(
+      ([key, skill]) => skill.id === abilityId
+    );
+  }
+);
+Handlebars.registerHelper("range", function (start, end) {
+  var range = [];
+  for (var i = start; i <= end; i++) {
+    range.push(i);
+  }
+  return range;
+});
 
 /* -------------------------------------------- */
 /*  Ready Hook                                  */

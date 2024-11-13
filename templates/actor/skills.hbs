@@ -1,38 +1,140 @@
-{{! Skills Tab }}
 <section
   class="tab skills {{tab.cssClass}}"
   data-group="primary"
   data-tab="skills"
 >
-  <ul class="skills-list">
-    {{#each system.skills as |skill key|}}
-      <li class="skill-item">
-        <div class="skill-info">
-          <label
-            class="skill-label rollable"
-            data-action="roll"
-            data-roll="{{skill.rating}}-1d100"
-            data-roll-type="skill"
-            data-label="{{key}}"
-          >{{key}}</label>
+  <section class="skills-container">
 
-          <input
-            type="text"
-            name="system.skills.{{key}}.value"
-            value="{{skill.value}}"
-            class="skill-value"
-            data-dtype="Number"
-          />
+    {{! Left Column }}
+    <div class="skills-column">
+      <h3>{{localize "TOS.Actor.Character.stats.health.value.label"}}/h3>
+      {{#each system.skills as |skill key|}}
+        {{#if (eq skill.id 0)}}
+          <div class="skill-entry flexrow">
+            <label
+              class="resource-label rollable flexlarge align-left"
+              data-action="roll"
+              data-roll="{{skill.rating}}-1d100"
+              data-roll-type="skill"
+              data-label="{{key}}"
+            >
+              {{key}}
+            </label>
+            <span>{{skill.rating}}</span>
+          </div>
+        {{/if}}
+      {{/each}}
 
-          <span
-            class="skill-rating rollable"
-            data-action="roll"
-            data-roll="{{skill.rating}}-1d100"
-            data-roll-type="skill"
-            data-label="{{key}}.rating"
-          >{{skill.rating}}</span>
-        </div>
-      </li>
-    {{/each}}
-  </ul>
+      <h3>Skills Group 1</h3>
+      {{#each system.skills as |skill key|}}
+        {{#if (eq skill.id 1)}}
+          <div class="skill-entry flexrow">
+            <label
+              class="resource-label rollable flexlarge align-left"
+              data-action="roll"
+              data-roll="{{skill.rating}}-1d100"
+              data-roll-type="skill"
+              data-label="{{key}}"
+            >
+              {{key}}
+            </label>
+            <span>{{skill.rating}}</span>
+          </div>
+        {{/if}}
+      {{/each}}
+
+      <h3>Skills Group 2</h3>
+      {{#each system.skills as |skill key|}}
+        {{#if (eq skill.id 2)}}
+          <div class="skill-entry flexrow">
+            <label
+              class="resource-label rollable flexlarge align-left"
+              data-action="roll"
+              data-roll="{{skill.rating}}-1d100"
+              data-roll-type="skill"
+              data-label="{{key}}"
+            >
+              {{key}}
+            </label>
+            <span>{{skill.rating}}</span>
+          </div>
+        {{/if}}
+      {{/each}}
+
+      <h3>Skills Group 3</h3>
+      {{#each system.skills as |skill key|}}
+        {{#if (eq skill.id 3)}}
+          <div class="skill-entry flexrow">
+            <label
+              class="resource-label rollable flexlarge align-left"
+              data-action="roll"
+              data-roll="{{skill.rating}}-1d100"
+              data-roll-type="skill"
+              data-label="{{key}}"
+            >
+              {{key}}
+            </label>
+            <span>{{skill.rating}}</span>
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
+    {{! Right Column }}
+    <div class="skills-column">
+      <h3>Skills Group 4</h3>
+      {{#each system.skills as |skill key|}}
+        {{#if (eq skill.id 4)}}
+          <div class="skill-entry flexrow">
+            <label
+              class="resource-label rollable flexlarge align-left"
+              data-action="roll"
+              data-roll="{{skill.rating}}-1d100"
+              data-roll-type="skill"
+              data-label="{{key}}"
+            >
+              {{key}}
+            </label>
+            <span>{{skill.rating}}</span>
+          </div>
+        {{/if}}
+      {{/each}}
+
+      <h3>Skills Group 5</h3>
+      {{#each system.skills as |skill key|}}
+        {{#if (eq skill.id 5)}}
+          <div class="skill-entry flexrow">
+            <label
+              class="resource-label rollable flexlarge align-left"
+              data-action="roll"
+              data-roll="{{skill.rating}}-1d100"
+              data-roll-type="skill"
+              data-label="{{key}}"
+            >
+              {{key}}
+            </label>
+            <span>{{skill.rating}}</span>
+          </div>
+        {{/if}}
+      {{/each}}
+
+      <h3>Skills Group 6</h3>
+      {{#each system.skills as |skill key|}}
+        {{#if (eq skill.id 6)}}
+          <div class="skill-entry flexrow">
+            <label
+              class="resource-label rollable flexlarge align-left"
+              data-action="roll"
+              data-roll="{{skill.rating}}-1d100"
+              data-roll-type="skill"
+              data-label="{{key}}"
+            >
+              {{key}}
+            </label>
+            <span>{{skill.rating}}</span>
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
+
+  </section>
 </section>

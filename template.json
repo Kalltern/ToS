@@ -38,25 +38,32 @@
       },
       "abilities": {
         "str": {
-          "value": 1
+          "value": 1,
+          "id": 0
         },
         "dex": {
-          "value": 1
+          "value": 1,
+          "id": 1
         },
         "end": {
-          "value": 1
+          "value": 1,
+          "id": 2
         },
         "int": {
-          "value": 1
+          "value": 1,
+          "id": 3
         },
         "wil": {
-          "value": 1
+          "value": 1,
+          "id": 4
         },
         "cha": {
-          "value": 1
+          "value": 1,
+          "id": 5
         },
         "per": {
-          "value": 1
+          "value": 1,
+          "id": 6
         }
       },
       "secondaryAbilities": {
