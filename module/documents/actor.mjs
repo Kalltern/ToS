@@ -23,7 +23,7 @@ export class ToSActor extends Actor {
    * Augment the actor source data with additional dynamic data. Typically,
    * you'll want to handle most of your calculated/derived data in this step.
    * Data calculated in this step should generally not exist in template.json
-   * (such as ability modifiers rather than ability scores) and should be
+   * (such as attribute modifiers rather than attribute scores) and should be
    * available both inside and outside of character sheets (such as if an actor
    * is queried and has a roll executed directly from it).
    */
@@ -46,46 +46,65 @@ export class ToSActor extends Actor {
 
     // Make modifications to data here. For example:
     const systemData = actorData.system; //everything else
-    // Loop through ability scores, and add their modifiers to our sheet output.
-    for (let [key, ability] of Object.entries(systemData.abilities)) {
-      // Calculate the ability rating using ToS rules.
-      ability.mod = Math.floor(15 + ability.value * 10);
+    // Loop through attribute scores, and add their modifiers to our sheet output.
+    for (let [key, attribute] of Object.entries(systemData.attributes)) {
+      // Calculate the attribute rating using ToS rules.
+      attribute.mod = Math.floor(15 + attribute.value * 10);
     }
-    // Debugging: Log the abilities
-    console.log(systemData.abilities);
+    // Debugging: Log the attributes
+    console.log(systemData.attributes);
     // Calculate endurance
-    const endurance = systemData.abilities.end.value; // Ensure endurance exists
+    const endurance = systemData.attributes.end.value; // Ensure endurance exists
     // Set health correctly under stats
     systemData.stats.health.max = endurance * 5; // Set health based on endurance
 
-    //Loop through skill groups and add their ratings depending on their level and ability score
+    //Loop through skill groups and add their ratings depending on their level and attribute score
     const skillset1 = [0, 15, 25, 30, 35, 45, 50, 55, 65, 75, 85];
+    const skillset2 = [0, 5, 10, 15, 20, 30]; // muscles, nimbleness
+    const skillset3 = [0, 25, 40, 55, 70, 85]; //riding and sailing
+    const skillset4 = [0, 40, 65, 90]; //dancing, meditation
+    const skillset5 = [0, 10, 20, 30, 40, 50]; //drinking
+    const skillset6 = [0, 5, 10, 15, 20, 25]; //social
+    const skillset7 = [0, 20, 30, 40, 50, 60]; //survival
     const combatset1 = [0, 20, 25, 30, 35, 45, 50, 60, 65, 75, 80];
-    const abilityScore = Object.values(systemData.abilities).map(
-      (ability) => ability.value
+    const attributeScore = Object.values(systemData.attributes).map(
+      (attribute) => attribute.value
     );
 
     // Iterate through skills
     for (let [key, skill] of Object.entries(systemData.skills)) {
       // Ensure skill type is valid and matches your criteria
       if (skill.type === 1) {
-        // Use skill.id to find the corresponding ability
+        // Use skill.id to find the corresponding attribute
 
-        skill.rating = skillset1[skill.value] + abilityScore[skill.id] * 3;
+        skill.rating = skillset1[skill.value] + attributeScore[skill.id] * 3;
+      } else if (skill.type === 2) {
+        skill.rating = skillset2[skill.value] + attributeScore[skill.id] * 3;
+      } else if (skill.type === 3) {
+        skill.rating = skillset3[skill.value] + attributeScore[skill.id] * 3;
+      } else if (skill.type === 4) {
+        skill.rating = skillset4[skill.value] + attributeScore[skill.id] * 3;
+      } else if (skill.type === 5) {
+        skill.rating = skillset5[skill.value] + attributeScore[skill.id] * 3;
+      } else if (skill.type === 6) {
+        skill.rating = skillset6[skill.value] + attributeScore[skill.id] * 6;
+      } else if (skill.type === 7) {
+        skill.rating = skillset7[skill.value] + attributeScore[skill.id] * 3;
       }
     }
     // Iterate through combat skills
     for (let [key, cskill] of Object.entries(systemData.cskills)) {
       // Ensure skill type is valid and matches your criteria
       if (cskill.type === 1) {
-        // Use skill.id to find the corresponding ability
+        // Use skill.id to find the corresponding attribute
 
-        cskill.rating = combatset1[cskill.value] + abilityScore[cskill.id] * 3;
+        cskill.rating =
+          combatset1[cskill.value] + attributeScore[cskill.id] * 3;
       }
     }
 
     // Define critical thresholds influenced by luck
-    const luck = systemData.secondaryAbilities.lck.value;
+    const luck = systemData.secondaryAttributes.lck.value;
     const baseCriticalSuccess = 5; // Base critical success threshold
     const baseCriticalFailure = 96; // Base critical failure threshold
 
@@ -170,10 +189,10 @@ export class ToSActor extends Actor {
   _getCharacterRollData(data) {
     if (this.type !== "character") return;
 
-    // Copy the ability scores to the top level, so that rolls can use
+    // Copy the attribute scores to the top level, so that rolls can use
     // formulas like `@str.mod + 4`.
-    if (data.abilities) {
-      for (let [k, v] of Object.entries(data.abilities)) {
+    if (data.attributes) {
+      for (let [k, v] of Object.entries(data.attributes)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }

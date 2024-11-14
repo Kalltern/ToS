@@ -1,45 +1,45 @@
 export const TOS = {};
 
 /**
- * The set of Ability Scores used within the system.
+ * The set of Attribute Scores used within the system.
  * @type {Object}
  */
-TOS.abilities = {
-  str: "TOS.Actor.Character.Ability.Str.long",
-  dex: "TOS.Actor.Character.Ability.Dex.long",
-  end: "TOS.Actor.Character.Ability.End.long",
-  int: "TOS.Actor.Character.Ability.Int.long",
-  wil: "TOS.Actor.Character.Ability.Wil.long",
-  cha: "TOS.Actor.Character.Ability.Cha.long",
-  per: "TOS.Actor.Character.Ability.Per.long",
+TOS.attributes = {
+  str: "TOS.Actor.Character.Attribute.Str.long",
+  dex: "TOS.Actor.Character.Attribute.Dex.long",
+  end: "TOS.Actor.Character.Attribute.End.long",
+  int: "TOS.Actor.Character.Attribute.Int.long",
+  wil: "TOS.Actor.Character.Attribute.Wil.long",
+  cha: "TOS.Actor.Character.Attribute.Cha.long",
+  per: "TOS.Actor.Character.Attribute.Per.long",
 };
 
-TOS.abilityAbbreviations = {
-  str: "TOS.Actor.Character.Ability.Str.abbr",
-  dex: "TOS.Actor.Character.Ability.Dex.abbr",
-  end: "TOS.Actor.Character.Ability.End.abbr",
-  int: "TOS.Actor.Character.Ability.Int.abbr",
-  wil: "TOS.Actor.Character.Ability.Wil.abbr",
-  cha: "TOS.Actor.Character.Ability.Cha.abbr",
-  per: "TOS.Actor.Character.Ability.Per.abbr",
+TOS.attributeAbbreviations = {
+  str: "TOS.Actor.Character.Attribute.Str.abbr",
+  dex: "TOS.Actor.Character.Attribute.Dex.abbr",
+  end: "TOS.Actor.Character.Attribute.End.abbr",
+  int: "TOS.Actor.Character.Attribute.Int.abbr",
+  wil: "TOS.Actor.Character.Attribute.Wil.abbr",
+  cha: "TOS.Actor.Character.Attribute.Cha.abbr",
+  per: "TOS.Actor.Character.Attribute.Per.abbr",
 };
 
-TOS.secondaryAbilities = {
-  spd: "TOS.Actor.Character.SecondaryAbility.Spd.long",
-  lck: "TOS.Actor.Character.SecondaryAbility.Lck.long",
-  res: "TOS.Actor.Character.SecondaryAbility.Res.long",
-  fth: "TOS.Actor.Character.SecondaryAbility.Fth.long",
-  sin: "TOS.Actor.Character.SecondaryAbility.Sin.long",
-  vis: "TOS.Actor.Character.SecondaryAbility.Vis.long",
-  ini: "TOS.Actor.Character.SecondaryAbility.Ini.long",
+TOS.secondaryAttributes = {
+  spd: "TOS.Actor.Character.SecondaryAttribute.Spd.long",
+  lck: "TOS.Actor.Character.SecondaryAttribute.Lck.long",
+  res: "TOS.Actor.Character.SecondaryAttribute.Res.long",
+  fth: "TOS.Actor.Character.SecondaryAttribute.Fth.long",
+  sin: "TOS.Actor.Character.SecondaryAttribute.Sin.long",
+  vis: "TOS.Actor.Character.SecondaryAttribute.Vis.long",
+  ini: "TOS.Actor.Character.SecondaryAttribute.Ini.long",
 };
 
-TOS.secondaryAbilityAbbreviations = {
-  spd: "TOS.Actor.Character.SecondaryAbility.Spd.abbr",
-  lck: "TOS.Actor.Character.SecondaryAbility.Lck.abbr",
-  res: "TOS.Actor.Character.SecondaryAbility.Res.abbr",
-  fth: "TOS.Actor.Character.SecondaryAbility.Fth.abbr",
-  sin: "TOS.Actor.Character.SecondaryAbility.Sin.abbr",
-  vis: "TOS.Actor.Character.SecondaryAbility.Vis.abbr",
-  ini: "TOS.Actor.Character.SecondaryAbility.Ini.abbr",
+TOS.secondaryAttributeAbbreviations = {
+  spd: "TOS.Actor.Character.SecondaryAttribute.Spd.abbr",
+  lck: "TOS.Actor.Character.SecondaryAttribute.Lck.abbr",
+  res: "TOS.Actor.Character.SecondaryAttribute.Res.abbr",
+  fth: "TOS.Actor.Character.SecondaryAttribute.Fth.abbr",
+  sin: "TOS.Actor.Character.SecondaryAttribute.Sin.abbr",
+  vis: "TOS.Actor.Character.SecondaryAttribute.Vis.abbr",
+  ini: "TOS.Actor.Character.SecondaryAttribute.Ini.abbr",
 };

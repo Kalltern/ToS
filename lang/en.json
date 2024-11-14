@@ -30,7 +30,7 @@
             "max": { "label": "Maximum Mana" }
           }
         },
-        "Ability": {
+        "Attribute": {
           "Str": { "long": "Strength", "abbr": "str" },
           "End": { "long": "Endurance", "abbr": "end" },
           "Dex": { "long": "Dexterity", "abbr": "dex" },
@@ -39,7 +39,7 @@
           "Cha": { "long": "Charisma", "abbr": "cha" },
           "Per": { "long": "Perception", "abbr": "per" }
         },
-        "SecondaryAbility": {
+        "SecondaryAttribute": {
           "Spd": { "long": "Speed", "abbr": "spd" },
           "Lck": { "long": "Luck", "abbr": "lck" },
           "Res": { "long": "Resolve", "abbr": "res" },
